@@ -91,12 +91,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、添加元素 array_push() 添加至末尾</span><br><span class="line"><span class="variable">$arr</span> = array(<span class="string">"蓝欧"</span>,<span class="string">"科技"</span>,<span class="string">"中国"</span>,<span class="string">"北京"</span>);</span><br><span class="line">array_push(<span class="variable">$arr</span>,<span class="string">"广州"</span>);</span><br><span class="line">2、删除元素 array_pop() 删除末尾元素</span><br><span class="line">array_pop(<span class="variable">$arr</span>);</span><br></pre></td></tr></table></figure>
+        <h4 id="1、添加元素-array-push-添加至末尾"><a href="#1、添加元素-array-push-添加至末尾" class="headerlink" title="1、添加元素 array_push() 添加至末尾"></a>1、添加元素 array_push() 添加至末尾</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;蓝欧&quot;,&quot;科技&quot;,&quot;中国&quot;,&quot;北京&quot;);</span><br><span class="line">array_push($arr,&quot;广州&quot;);</span><br></pre></td></tr></table></figure>
+<p>如果想添加一个关联数组，不能用<code>arrar_push($arr,&quot;name&quot;=&gt;&quot;张三&quot;)</code>,直接用<code>$arr[&quot;name&quot;]=&quot;重中之中&quot;</code></p>
+<h4 id="2、删除元素-array-pop-删除末尾元素"><a href="#2、删除元素-array-pop-删除末尾元素" class="headerlink" title="2、删除元素 array_pop() 删除末尾元素"></a>2、删除元素 array_pop() 删除末尾元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_pop($arr);</span><br></pre></td></tr></table></figure>
+<h4 id="3、array-unshift-数组，值-在数组开头添加元素"><a href="#3、array-unshift-数组，值-在数组开头添加元素" class="headerlink" title="3、array_unshift(数组，值)在数组开头添加元素"></a>3、array_unshift(数组，值)在数组开头添加元素</h4><h4 id="4、arrar-shift-数组，值-删除数组开头元素"><a href="#4、arrar-shift-数组，值-删除数组开头元素" class="headerlink" title="4、arrar_shift(数组，值) 删除数组开头元素"></a>4、arrar_shift(数组，值) 删除数组开头元素</h4><h4 id="5、array-splice-替换数组元素"><a href="#5、array-splice-替换数组元素" class="headerlink" title="5、array_splice()  替换数组元素"></a>5、array_splice()  替换数组元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;first&quot;,&quot;蓝欧&quot;,&quot;中国&quot;,&quot;第一&quot;);</span><br><span class="line">array_splice($arr,0,1,&quot;nb&quot;);   //从0下标开始，用”nb“替换一个元素，即替换掉first</span><br><span class="line">array_splice($arr,2,1);  如果没有第四个参数，就将选中的元素删除了</span><br><span class="line">array_splice($arr 2,0,&quot;你好&quot;); //添加一个元素</span><br><span class="line">array_splice($arr,2,0,array(&quot;hello&quot;,&quot;world&quot;)); //这样可以插入多个元素</span><br></pre></td></tr></table></figure>
+<h4 id="6、判断数组中是否包含指定的值-in-array-值-数组"><a href="#6、判断数组中是否包含指定的值-in-array-值-数组" class="headerlink" title="6、判断数组中是否包含指定的值 in_array(值,数组)"></a>6、判断数组中是否包含指定的值 in_array(值,数组)</h4><p>注意：不能判断key，只能判断值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;first&quot;,&quot;second&quot;);</span><br><span class="line">$value = in_array(&quot;iii&quot;,$arr);  //空</span><br><span class="line">if($value)&#123;</span><br><span class="line">	echo &quot;存在&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;不存在&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="7、关联数组获得所有键名"><a href="#7、关联数组获得所有键名" class="headerlink" title="7、关联数组获得所有键名"></a>7、关联数组获得所有键名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;name&quot;=&gt;&quot;list&quot;,&quot;sex&quot;=&gt;&quot;nv&quot;);</span><br><span class="line">$value = array_keys($arr);  //得到所有键名，存入数组</span><br><span class="line">print_r($value);</span><br></pre></td></tr></table></figure>
+<h4 id="8、关联数组判断键名是否存在"><a href="#8、关联数组判断键名是否存在" class="headerlink" title="8、关联数组判断键名是否存在"></a>8、关联数组判断键名是否存在</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;name&quot;=&gt;&quot;list&quot;,&quot;sex&quot;=&gt;&quot;nv&quot;);</span><br><span class="line">$value=array_key_exists(&quot;name&quot;,$arr);</span><br><span class="line">if($value)&#123;</span><br><span class="line">	echo &quot;存在&quot;;</span><br><span class="line">&#125; else&#123;</span><br><span class="line">	echo &quot;不存在&quot;; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="9、数组排序"><a href="#9、数组排序" class="headerlink" title="9、数组排序"></a>9、数组排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;first&quot;,&quot;second&quot;,&quot;a&quot;,&quot;m&quot;);</span><br><span class="line">sort($arr);</span><br><span class="line">print_r($arr);  //a,first,m,second 按字母顺序排序</span><br><span class="line">$arr = array(19,2,16,34);</span><br><span class="line">sort($arr);</span><br><span class="line">print_r($arr); //2,16,19,34 按数字大小排序</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cj9zl59220003ov4qazorsz95" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cj9zl5jdm0003pp4q1ptzsmkx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cj9zl59200002ov4qutgdc07x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cj9zl5jdj0002pp4q3168w3hu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cj9zl591q0000ov4q7j0atvmb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cj9zl5jd90000pp4qsud8p9sa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -246,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cj9zl591w0001ov4qul63fh50" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cj9zl5jdf0001pp4qewnfc8vc" class="article-share-link">Share</a>
       
       
     </footer>
