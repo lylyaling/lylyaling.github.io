@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>php数组 | 刘雅玲</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#一、数组创建1234567891011121314//1、创建数组$arr = array(&amp;quot;first&amp;quot;,&amp;quot;second&amp;quot;,&amp;quot;third&amp;quot;);print_r($arr); echo &amp;quot;&amp;lt;br/&amp;gt;&amp;quot;;//获得数组里的元素$first = $arr[0];echo $first;//修改第二个元素$arr[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php数组">
+<meta property="og:url" content="http://yoursite.com/2017/11/14/php数组/index.html">
+<meta property="og:site_name" content="刘雅玲">
+<meta property="og:description" content="#一、数组创建1234567891011121314//1、创建数组$arr = array(&amp;quot;first&amp;quot;,&amp;quot;second&amp;quot;,&amp;quot;third&amp;quot;);print_r($arr); echo &amp;quot;&amp;lt;br/&amp;gt;&amp;quot;;//获得数组里的元素$first = $arr[0];echo $first;//修改第二个元素$arr[">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-14T12:03:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php数组">
+<meta name="twitter:description" content="#一、数组创建1234567891011121314//1、创建数组$arr = array(&amp;quot;first&amp;quot;,&amp;quot;second&amp;quot;,&amp;quot;third&amp;quot;);print_r($arr); echo &amp;quot;&amp;lt;br/&amp;gt;&amp;quot;;//获得数组里的元素$first = $arr[0];echo $first;//修改第二个元素$arr[">
+  
+    <link rel="alternate" href="/atom.xml" title="刘雅玲" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘雅玲</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录我的编程之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-php数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/14/php数组/" class="article-date">
+  <time datetime="2017-11-14T11:18:34.000Z" itemprop="datePublished">2017-11-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      php数组
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#一、数组创建<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//1、创建数组</span><br><span class="line">$arr = array(&quot;first&quot;,&quot;second&quot;,&quot;third&quot;);</span><br><span class="line">print_r($arr); </span><br><span class="line">echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">//获得数组里的元素</span><br><span class="line">$first = $arr[0];</span><br><span class="line">echo $first;</span><br><span class="line">//修改第二个元素</span><br><span class="line">$arr[1] = &quot;第二个&quot;;</span><br><span class="line">print_r($arr);</span><br><span class="line">echo &quot;&lt;br/&gt;&quot;</span><br><span class="line">//获得数组的长度</span><br><span class="line">$value = count($arr);</span><br><span class="line">echo $value;     //3</span><br></pre></td></tr></table></figure></p>
+<p>#二、关联数组的创建<br><code>$arr = array(&quot;年龄&quot;=&gt;&quot;18&quot;,&quot;sex&quot;=&gt;&quot;男&quot;);   //下标是姓名，不再是下标数字0、1、2等</code><br>关联数组类似js里面的对象  </p>
+<p>#三、数组遍历<br>第一种：<code>for($i = 0;$i &lt; count($arr); $i++){ }  不能对关联数组作用</code><br>第二种：<code>foreach($arr as $key=&gt;$val){ }  两种数组都能搞定，推荐使用</code></p>
+<p>##注意：<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;name&quot;=&gt;&quot;蓝欧&quot;，&quot;sex&quot;=&gt;&quot;男&quot;，“third”);</span><br></pre></td></tr></table></figure></p>
+<p>这个数组里面的元素对应的key值是name、sex、0</p>
+<p>#四、总结</p>
+<p>######1、数组创建方式：array( )</p>
+<blockquote>
+<p>在数组创建的时候有两种书写方式：</p>
+<blockquote>
+<p>第一种：array(“值1”,”值2”,”值3”);<br>第二种：array(“键1”=&gt;”值1”,”键2”=&gt;”值2”);</p>
+<p>######2、获得数组的元素<br>第一种创建方式其实是将里面的值默认添加一个键，从0开始添加<br>第二种获得的方式是通过键的方式来获得$arr[‘键’]；</p>
+<p>######3、遍历数组<br>for循环，只能使用第一种创建方式<br>foreach($arr  as  $key=&gt;$val){  } 能够使用两种创建方式</p>
+<p>######4、数组长度的函数<br>count($arr)</p>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cj9zkknvz0000y04qshn2v97x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/13/php基础语法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">php基础语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/11/14/php数组/">php数组</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/13/php基础语法/">php基础语法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/13/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 雅玲<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -69,6 +69,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-php数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/14/php数组/" class="article-date">
+  <time datetime="2017-11-14T11:18:34.000Z" itemprop="datePublished">2017-11-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/14/php数组/">php数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#一、数组创建<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//1、创建数组</span><br><span class="line">$arr = array(&quot;first&quot;,&quot;second&quot;,&quot;third&quot;);</span><br><span class="line">print_r($arr); </span><br><span class="line">echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">//获得数组里的元素</span><br><span class="line">$first = $arr[0];</span><br><span class="line">echo $first;</span><br><span class="line">//修改第二个元素</span><br><span class="line">$arr[1] = &quot;第二个&quot;;</span><br><span class="line">print_r($arr);</span><br><span class="line">echo &quot;&lt;br/&gt;&quot;</span><br><span class="line">//获得数组的长度</span><br><span class="line">$value = count($arr);</span><br><span class="line">echo $value;     //3</span><br></pre></td></tr></table></figure></p>
+<p>#二、关联数组的创建<br><code>$arr = array(&quot;年龄&quot;=&gt;&quot;18&quot;,&quot;sex&quot;=&gt;&quot;男&quot;);   //下标是姓名，不再是下标数字0、1、2等</code><br>关联数组类似js里面的对象  </p>
+<p>#三、数组遍历<br>第一种：<code>for($i = 0;$i &lt; count($arr); $i++){ }  不能对关联数组作用</code><br>第二种：<code>foreach($arr as $key=&gt;$val){ }  两种数组都能搞定，推荐使用</code></p>
+<p>##注意：<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;name&quot;=&gt;&quot;蓝欧&quot;，&quot;sex&quot;=&gt;&quot;男&quot;，“third”);</span><br></pre></td></tr></table></figure></p>
+<p>这个数组里面的元素对应的key值是name、sex、0</p>
+<p>#四、总结</p>
+<p>######1、数组创建方式：array( )</p>
+<blockquote>
+<p>在数组创建的时候有两种书写方式：</p>
+<blockquote>
+<p>第一种：array(“值1”,”值2”,”值3”);<br>第二种：array(“键1”=&gt;”值1”,”键2”=&gt;”值2”);</p>
+<p>######2、获得数组的元素<br>第一种创建方式其实是将里面的值默认添加一个键，从0开始添加<br>第二种获得的方式是通过键的方式来获得$arr[‘键’]；</p>
+<p>######3、遍历数组<br>for循环，只能使用第一种创建方式<br>foreach($arr  as  $key=&gt;$val){  } 能够使用两种创建方式</p>
+<p>######4、数组长度的函数<br>count($arr)</p>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cj9zkknvz0000y04qshn2v97x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-php基础语法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/13/php基础语法/" class="article-date">
@@ -117,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cj9y9827l0000ml4q49n31pha" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cj9zkknw80002y04qb87j88iu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cj9y9827q0001ml4qeyroc15s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cj9zkknw50001y04qimbhan83" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,6 +252,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/11/14/php数组/">php数组</a>
+          </li>
         
           <li>
             <a href="/2017/11/13/php基础语法/">php基础语法</a>
