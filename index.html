@@ -69,6 +69,206 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-php面向对象" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/25/php面向对象/" class="article-date">
+  <time datetime="2017-11-25T02:56:32.000Z" itemprop="datePublished">2017-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/25/php面向对象/">php面向对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、类"><a href="#一、类" class="headerlink" title="一、类"></a>一、类</h1><blockquote>
+<p>类是一种具有统一的特征和行为的声明<br>特征：是属性<br>行为：方法或者函数</p>
+</blockquote>
+<p>  属性有三个标识，1、public:公共的，2、protected:受保护的，3、private：私有的</p>
+<p>1、protected和private的属性：不能在外部通过对象的属性直接调用，一般是在类的内部直接使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//第一步：创建一个people类</span><br><span class="line">class People()&#123;</span><br><span class="line">    public $name = &quot;张三&quot;;</span><br><span class="line">     protected $sex = &quot;男&quot;;</span><br><span class="line">    private $age = &quot;19&quot;;</span><br><span class="line">    //内部才能直接使用对象的protected和private属性</span><br><span class="line">   // $age += 90;  //类内部不能运算，需要在一个函数里面去运算</span><br><span class="line">   // 第三步：函数</span><br><span class="line">    public function setAge($age)&#123;</span><br><span class="line">          //$this指当前对象</span><br><span class="line">          $this-&gt;age+=1;</span><br><span class="line">          echo $this-&gt;age;</span><br><span class="line">    &#125; </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//第二步：对象化实例</span><br><span class="line">$p1 = new People();</span><br><span class="line">echo $p1-&gt;name;   //获得对象对应的属性</span><br><span class="line">echo &quot;&lt;br/&gt;&quot;;</span><br><span class="line">//外部直接调用对象的protected和private的属性会报错</span><br><span class="line">//echo $p1-&gt;sex;报错    //sex是protected受保护的</span><br><span class="line">//echo $age-&gt;age;报错    //age是private私有的</span><br><span class="line"></span><br><span class="line">第四步：外部调用public函数</span><br><span class="line">$p1-&gt;setAge(10);</span><br></pre></td></tr></table></figure>
+<p>提供protected和private两种是为了保证数据的安全</p>
+<h1 id="二、格式化输出属性"><a href="#二、格式化输出属性" class="headerlink" title="二、格式化输出属性"></a>二、格式化输出属性</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    class  People&#123;</span><br><span class="line">        public $name;</span><br><span class="line">        public $age;</span><br><span class="line">        public $sex;</span><br><span class="line">        //格式化输出属性</span><br><span class="line">        public function desc()&#123;</span><br><span class="line">              return &quot;姓名：&quot;.$this-&gt;name.&quot; 年龄&quot;.$this-&gt;age.&quot; 性别&quot;.$this-&gt;sex.&quot;id:&quot;.$this-&gt;id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $p1 = new People();</span><br><span class="line">    $p1 -&gt;name = &quot;李四&quot;;</span><br><span class="line">    $p1 -&gt;age = 19;</span><br><span class="line">    $p1 -&gt;sex = &quot;男&quot;;</span><br><span class="line">    $p1 -&gt;id = 1001; //人为添加的属性也能在类内部打印</span><br><span class="line">    //不能用echo $p1打印对象，echo只能打印字符串</span><br><span class="line">    echo $p1-&gt;$age;  //通过逐一打印对象属性</span><br><span class="line">    //调用public函数打印对象</span><br><span class="line">    echo $p1-&gt;desc();   //姓名：李四 年龄：19 性别：男</span><br><span class="line">    $p2 = new People();</span><br><span class="line">    $p2 -&gt;name = &quot;王五&quot;;</span><br><span class="line">    $p2 -&gt;age = 15;</span><br><span class="line">    $p2-&gt;sex = &quot;不知道&quot;;</span><br><span class="line">     echo $p1-&gt;desc();   //姓名：王五 年龄：15 性别：不知道</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="三、构造函数"><a href="#三、构造函数" class="headerlink" title="三、构造函数"></a>三、构造函数</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    class People&#123;</span><br><span class="line">         public $name;</span><br><span class="line">         public $age;</span><br><span class="line">         public $sex;</span><br><span class="line">         public function desc()&#123;</span><br><span class="line">              return &quot;姓名：&quot;.$this-&gt;name.&quot; 年龄&quot;.$this-&gt;age.&quot; 性别&quot;.$this-&gt;sex.&quot;id:&quot;.$this-&gt;id;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //构造函数:系统提供的函数，在new一个对象的时候会自动调用，形参可以给默认值，如果传入实参，就用实参，不然就用形参的值</span><br><span class="line">        public function __construct($name,$age,$sex=”男“)&#123;</span><br><span class="line">              $this-&gt;name = $name;  //形参$name赋值给属性name</span><br><span class="line">              $this-&gt;age = $age;</span><br><span class="line">              $this -&gt;sex = $sex;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $p1 = new People(&quot;张三&quot;,19);</span><br><span class="line">  //通过这种方法给对象属性赋值时，需要写一个构造函数，传对应的形参，再讲形参赋给属性</span><br><span class="line">    echo $p1-&gt;desc();</span><br><span class="line">  一旦写了构造函数，在创建对象时一定要传入参数</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="四、析构函数"><a href="#四、析构函数" class="headerlink" title="四、析构函数"></a>四、析构函数</h1><p>在对象生命周期结束的时候自动调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    class People&#123;</span><br><span class="line">         public $name;</span><br><span class="line">         public $age;</span><br><span class="line">         public $sex;</span><br><span class="line">         public function desc()&#123;</span><br><span class="line">              return &quot;姓名：&quot;.$this-&gt;name.&quot; 年龄&quot;.$this-&gt;age.&quot; 性别&quot;.$this-&gt;sex.&quot;id:&quot;.$this-&gt;id;</span><br><span class="line">        &#125;</span><br><span class="line">        public function __construct($name,$age,$sex=”男“)&#123;</span><br><span class="line">              $this-&gt;name = $name;  //形参$name赋值给属性name</span><br><span class="line">              $this-&gt;age = $age;</span><br><span class="line">              $this -&gt;sex = $sex;</span><br><span class="line">        &#125;</span><br><span class="line">        //析构函数   在对象使用完（释放）之后调用</span><br><span class="line">        public function __destruct()&#123;</span><br><span class="line">               echo &quot;析构函数&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $p1 = new People(&quot;张三&quot;,19);</span><br><span class="line">    echo $p1-&gt;desc();</span><br><span class="line">    //到此，对象已经使用完毕，这里会自动调用析构函数</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="五、面向对象的继承"><a href="#五、面向对象的继承" class="headerlink" title="五、面向对象的继承"></a>五、面向对象的继承</h1><p>把一些重复的属性和方法封装到一个类里面，称之为继承</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    class Student&#123;</span><br><span class="line">         public $name;</span><br><span class="line">         public $age;</span><br><span class="line">         public $sex;</span><br><span class="line">         public function move()&#123;</span><br><span class="line">              echo &quot;跑&quot;;</span><br><span class="line">         &#125;</span><br><span class="line">         public function __construct($name,$sex,$age)&#123;</span><br><span class="line">               $this-&gt;name = $name;</span><br><span class="line">                $this-&gt;age = $age;</span><br><span class="line">                $this-&gt;sex = $sex;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">//需要让当前的类继承于对应的类</span><br><span class="line">     class BigStudent extends Student&#123;</span><br><span class="line">          public $score;</span><br><span class="line">          public function __construct($name,$sex,$age,$score)&#123;</span><br><span class="line">                parent::__contruct($name,$sex,$age);</span><br><span class="line">                $this-&gt;score=$score;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">      $s1 = new BigStudent(&quot;张三&quot;,&quot;男&quot;,19,80);</span><br><span class="line">      $s1-&gt;move();</span><br><span class="line">      echo $s1-&gt;name.$s1-&gt;sex.$s1-&gt;age.$s1-&gt;score;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>再举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">    class Zombie&#123;</span><br><span class="line">          public $blood;</span><br><span class="line">          public $speed;</span><br><span class="line">          public function move()&#123;</span><br><span class="line">          </span><br><span class="line">          &#125;</span><br><span class="line">          public function diaoxue()&#123;</span><br><span class="line">          </span><br><span class="line">          &#125;</span><br><span class="line">          public function dead()&#123;</span><br><span class="line">          </span><br><span class="line">          &#125; </span><br><span class="line">          public function __construct($blood,$speed)&#123;</span><br><span class="line">                    $this-&gt;blood = $blood;</span><br><span class="line">                    $this-&gt;speed = $speed;</span><br><span class="line">          &#125; </span><br><span class="line">          public function description()&#123;</span><br><span class="line">              return &quot;血量：&quot;$this-&gt;blood.&quot;速度：&quot;.$this-&gt;speed;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">      class   TieTongZombie extends Zombie&#123;</span><br><span class="line">          parent::__construct($blood,$speed);</span><br><span class="line">          public color;</span><br><span class="line">          public function description()&#123;</span><br><span class="line">                 //写法一：</span><br><span class="line">                 //return &quot;血量：&quot;$this-&gt;blood.&quot;速度：&quot;.$this-&gt;speed.&quot;颜色&quot;.$this-&gt;color;</span><br><span class="line">                //写法二：调用父类函数，再拼接</span><br><span class="line">                 $value = parent::description();</span><br><span class="line">                  return $value.&quot;颜色：&quot;.$this-&gt;color;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      $z1 = new TieTongZombie(100,10,&quot;yellow&quot;);  //color属性是子类属性，父类没有</span><br><span class="line">      echo  $z1-&gt;description();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>注：若一个子类对象属性，子类没有该属性，就在父类里面去找，如果子类有，就调用子类本身，如果子类和父类都有，就调用当前对象</p>
+<h1 id="六、private和protected在继承里面的区别"><a href="#六、private和protected在继承里面的区别" class="headerlink" title="六、private和protected在继承里面的区别"></a>六、private和protected在继承里面的区别</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">     class People&#123;</span><br><span class="line">         protected $name;</span><br><span class="line">         function __contruct($name)&#123;</span><br><span class="line">               $this-&gt;name = $name; </span><br><span class="line">         &#125; </span><br><span class="line">     &#125;</span><br><span class="line">     class   Student extends People&#123;</span><br><span class="line">          function __construct($name)&#123;</span><br><span class="line">              parent::__construct($name);</span><br><span class="line">          &#125;</span><br><span class="line">          public function my()&#123;</span><br><span class="line">              echo $this-&gt;name;  //在子类函数可以调用父类受保护的属性</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      $s1 = new Student(&quot;张三&quot;);</span><br><span class="line">      echo $s1-&gt;name;</span><br><span class="line">      $s1 -&gt; my();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>1、protected ：子类继承父类属性，只能在类内部使用<br>2、private：子类不能从父类中继承private所标注的属性</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/25/php面向对象/" data-id="cjaeqycpg0006sv4qotyzq488" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php数据库语句" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/23/php数据库语句/" class="article-date">
+  <time datetime="2017-11-23T13:33:28.000Z" itemprop="datePublished">2017-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/23/php数据库语句/">php数据库语句</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/23/php数据库语句/" data-id="cjaeqycpb0004sv4qrgo8u12e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AJAX介绍及创建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/17/AJAX介绍及创建/" class="article-date">
+  <time datetime="2017-11-17T03:14:03.000Z" itemprop="datePublished">2017-11-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/AJAX介绍及创建/">AJAX介绍及创建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#一、什么是AJAX</p>
+<blockquote>
+<p>1、AJAX即“Asynchronous Javascript And XML”（异步javaScript和XML），是指一种创建交互网页应用的网页开发技术。</p>
+<p>2、AJAX是一种用于创建快速动态网页的技术。通过在后台与服务器进行少量的数据交换，AJAX可以使用网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用AJAX）如果需要更新内容，必须重载整个网页页面。</p>
+<p>3、AJAX的核心是JavaScript对象XMLHttpRequest</p>
+</blockquote>
+<p>交互流程图</p>
+<p>/Users/lanou/Library/Containers/com.tencent.qq/Data/Library/Application Support/QQ/Users/2956192818/QQ/Temp.db/789E753A-2514-469E-8F2A-0D4BBF11BC6B.pn</p>
+<p>#二、AJAX创建流程</p>
+<blockquote>
+<p>1、创建XMLHttpRequest对象</p>
+<p> var xhr=new XMLHttpResquest();</p>
+<p>2、对xhr进行配置</p>
+<p> xhr.open(“传输方式GET/POST”,”网址”,”是否异步”)；</p>
+<p>3、发送网络请求</p>
+<p>xhr.send();</p>
+<p>4、监听网络请求状态并接收网络返回的数据</p>
+<p>请求过程中，readyState会发生变化，0~1</p>
+<p>0是厨师状态，1是创建连接，2是客户端向服务端发送数据，3是服务端可是向客户端返回数据，4是客户端接收数据</p>
+<p>xhr.onreadyststechange = function(){</p>
+<p>console.log(this.readyState);</p>
+<p>}</p>
+<p>5、onload事件,在状态4之后才开始执行</p>
+<p>xhr.onload=function(){</p>
+<p>console.log(this.resposeText);</p>
+<p>}</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjaeqycoz0000sv4qayvrbkdb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php函数文件上传" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/16/php函数文件上传/" class="article-date">
+  <time datetime="2017-11-16T13:58:12.000Z" itemprop="datePublished">2017-11-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/16/php函数文件上传/">php函数文件上传</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##文件上传 $_FILES</p>
+<p>###1、限制<br>（1）文件大小（前端设置和后台限制）<br>（2）错误：</p>
+<pre><code>0：没有错误
+1：文件大小超出php的设置
+2：文件大小超出HTML最大设置，MAX_FILES_SIZE
+3：    文件只被上传了一部分
+4：没有上传任何文件
+</code></pre><p>###2、上传图片<br>（1）图片名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$name=$_FILES[&apos;tupian&apos;][&apos;name&apos;];</span><br></pre></td></tr></table></figure>
+<p>（2）图片类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$type=$_FILES[&apos;tupian&apos;][&apos;type&apos;];</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjaeqycpa0003sv4qp4ligozj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-php函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/15/php函数/" class="article-date">
@@ -109,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cja2jg5r500019z4qv6en10wi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cjaeqycp80002sv4qkk9f7j6a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cja2jg5rb00039z4q8qkcfmyx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cjaeqycpd0005sv4q227vewzl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cja2jg5rf00059z4qx9fdenm4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cjaeqycpm0008sv4q24vbqlrs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cja2jg5rd00049z4qdj33nlss" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cjaeqycpn0009sv4qkkmimznv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cja2jg5r900029z4qz5ewzivf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cjaeqycph0007sv4qdizo9w2w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -343,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cja2jg5qy00009z4q74zkw389" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cjaeqycp40001sv4qvibvtble" class="article-share-link">Share</a>
       
       
     </footer>
@@ -383,23 +583,23 @@
       <ul>
         
           <li>
+            <a href="/2017/11/25/php面向对象/">php面向对象</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/23/php数据库语句/">php数据库语句</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/17/AJAX介绍及创建/">AJAX介绍及创建</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/16/php函数文件上传/">php函数文件上传</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/15/php函数/">php函数</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/14/php多维数组/">php多维数组</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/14/php数组函数/">php数组函数</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/14/php数组/">php数组</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/13/php基础语法/">php基础语法</a>
           </li>
         
       </ul>
