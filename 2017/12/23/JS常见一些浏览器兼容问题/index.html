@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JS常见一些浏览器兼容问题 | 刘雅玲</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在开发的过程中，我们就经常会遇到浏览器的兼容问题，因为我们不知道用户是用什么版本的浏览器，对于不同的浏览器，对一些不同的样式或者事件，不同的浏览器支持度页不一样，那么我们今天来总结一部分常见的浏览器兼容事件吧。 一、事件绑定中的addEventListener()方法1、浏览器支持：支持该方法的第一个浏览器的版本号  Internet Explorer 8 及更早IE版本不支持 addEventL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS常见一些浏览器兼容问题">
+<meta property="og:url" content="http://yoursite.com/2017/12/23/JS常见一些浏览器兼容问题/index.html">
+<meta property="og:site_name" content="刘雅玲">
+<meta property="og:description" content="在开发的过程中，我们就经常会遇到浏览器的兼容问题，因为我们不知道用户是用什么版本的浏览器，对于不同的浏览器，对一些不同的样式或者事件，不同的浏览器支持度页不一样，那么我们今天来总结一部分常见的浏览器兼容事件吧。 一、事件绑定中的addEventListener()方法1、浏览器支持：支持该方法的第一个浏览器的版本号  Internet Explorer 8 及更早IE版本不支持 addEventL">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-b4d21c88e2984e61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-737726f9f6bebe22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-23T07:48:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS常见一些浏览器兼容问题">
+<meta name="twitter:description" content="在开发的过程中，我们就经常会遇到浏览器的兼容问题，因为我们不知道用户是用什么版本的浏览器，对于不同的浏览器，对一些不同的样式或者事件，不同的浏览器支持度页不一样，那么我们今天来总结一部分常见的浏览器兼容事件吧。 一、事件绑定中的addEventListener()方法1、浏览器支持：支持该方法的第一个浏览器的版本号  Internet Explorer 8 及更早IE版本不支持 addEventL">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/7426676-b4d21c88e2984e61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="刘雅玲" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘雅玲</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录我的编程之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS常见一些浏览器兼容问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/23/JS常见一些浏览器兼容问题/" class="article-date">
+  <time datetime="2017-12-23T07:47:15.000Z" itemprop="datePublished">2017-12-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS常见一些浏览器兼容问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开发的过程中，我们就经常会遇到浏览器的兼容问题，因为我们不知道用户是用什么版本的浏览器，对于不同的浏览器，对一些不同的样式或者事件，不同的浏览器支持度页不一样，那么我们今天来总结一部分常见的浏览器兼容事件吧。</p>
+<h1 id="一、事件绑定中的addEventListener-方法"><a href="#一、事件绑定中的addEventListener-方法" class="headerlink" title="一、事件绑定中的addEventListener()方法"></a>一、事件绑定中的addEventListener()方法</h1><h5 id="1、浏览器支持："><a href="#1、浏览器支持：" class="headerlink" title="1、浏览器支持："></a>1、浏览器支持：</h5><p>支持该方法的第一个浏览器的版本号</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-b4d21c88e2984e61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="支持的浏览器.png"></p>
+<p>Internet Explorer 8 及更早IE版本不支持 addEventListener() 方法，，Opera 7.0 及 Opera 更早版本也不支持,但是，对于这些不支持该函数的浏览器，你可以使用 attachEvent() 方法来添加事件</p>
+<h5 id="2、语法"><a href="#2、语法" class="headerlink" title="2、语法"></a>2、语法</h5><p><code>element.addEventListener(event, function, useCapture)</code></p>
+<p>参数说明：<br>event ：必须，字符串，指定事件名，不要使用“on”前缀<br>function：必须，事件触发时执行的函数<br>useCapture: 可选，布尔值，指定事件是否在捕获或者冒泡阶段执行；true：在捕获阶段执行；false：默认，在冒泡阶段执行</p>
+<h5 id="3、兼容性写法"><a href="#3、兼容性写法" class="headerlink" title="3、兼容性写法"></a>3、兼容性写法</h5><p>我们通过判断浏览器是否支持addEventListener函数或者attachEvent函数来执行对应的语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//参数说明：</span><br><span class="line">//element：需要操作的对象</span><br><span class="line">//type：需要绑定的事件名</span><br><span class="line">//fn：事件触发时执行的函数</span><br><span class="line">function addEvent(element, type, fn)&#123;</span><br><span class="line">    if(element.addEventListener)&#123;</span><br><span class="line">        element.addEventListener(type,fn,false);</span><br><span class="line">    &#125;else if(element.attachEvent)&#123;</span><br><span class="line">        element.attachEvent(&quot;on&quot;+type,fn);  </span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        element[&quot;on&quot;+type]=fn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="二、解除事件绑定的removeEventListener-方法"><a href="#二、解除事件绑定的removeEventListener-方法" class="headerlink" title="二、解除事件绑定的removeEventListener()方法"></a>二、解除事件绑定的removeEventListener()方法</h1><h5 id="1、浏览器支持"><a href="#1、浏览器支持" class="headerlink" title="1、浏览器支持"></a>1、浏览器支持</h5><p>支持该方法的第一个浏览器的版本号<br><img src="http://upload-images.jianshu.io/upload_images/7426676-737726f9f6bebe22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="支持的浏览器.png"></p>
+<p> Internet Explorer 8 及更早IE版本不支持 removeEventListener() 方法，Opera 7.0 及 Opera 更早版本也不支持。 但是，对于这些不支持该函数的浏览器，你可以使用 detachEvent() 方法来移除由 attachEvent() 方法添加的事件。</p>
+<h5 id="2、语法-1"><a href="#2、语法-1" class="headerlink" title="2、语法"></a>2、语法</h5><p><code>element.removeEventListener(event, function, useCapture)</code></p>
+<p>参数说明：<br>event：必须，要移除的事件名称，不要加“on”前缀<br>function：必须，指定要移除的函数<br>useCapture：可选，布尔值。指定移除事件是否在捕获或者冒泡阶段执行；true：在捕获阶段执行；false：默认，在冒泡阶段执行。</p>
+<h5 id="3、兼容性写法-1"><a href="#3、兼容性写法-1" class="headerlink" title="3、兼容性写法"></a>3、兼容性写法</h5><p>我们通过判断浏览器是否支持removeEventListener函数或者detachEvent函数来执行对应的语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//参数说明：</span><br><span class="line">//element：需要操作的对象</span><br><span class="line">//type：需要解除绑定的事件名</span><br><span class="line">//fn：事件触发时移除的函数</span><br><span class="line">function removeEvent(element,type,fn)&#123;</span><br><span class="line">	if(element.removeEventListener)&#123;</span><br><span class="line">	      console.log(element.removeEventListener, element, type, fn)</span><br><span class="line">	      element.removeEventListener(type,fn,false);</span><br><span class="line">	&#125;else if(element.detachEvent)&#123;</span><br><span class="line">		element.detachEvent(&quot;on&quot;+type,fn);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		element[&quot;on&quot;+type]=null;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、滚轮事件addMousewhel"><a href="#三、滚轮事件addMousewhel" class="headerlink" title="三、滚轮事件addMousewhel()"></a>三、滚轮事件addMousewhel()</h1><h5 id="1、浏览器支持-1"><a href="#1、浏览器支持-1" class="headerlink" title="1、浏览器支持"></a>1、浏览器支持</h5><p>这里不是区分IE8派和其他派，而是区分Firefox派和其他派，Firefox浏览器一个人使用DOMMouseScroll，其他包括IE6在内的浏览器使用onmousewheel<br>　　那么我们想想想滚动滚轮的时候，还有什么是我们遇到问题呢？<br>（1）、鼠标滚轮是向上滚动还是向下滚动呢？<br>（2）、鼠标滚轮滚动的幅度大小是多少呢？<br>还好，我们可以通过event的某些属性值得到这些信息<br>（1）“mousewheel”事件中的“event.wheelDelta”属性值，如果返回值是正值说明滚轮是向上滚动，如果是负值说明滚轮是向下滚动，返回的值是120的倍数，即幅度大小 = 返回值/120 ;<br>（2）“DOMMouseScroll”事件中“event.datail”属性值：如果返回值是正值说明滚轮是向下滚动，如果是负值说明是向上滚动（与 “event.wheelDelta” 正好相反），幅度大小 = 返回值；</p>
+<h5 id="2、兼容性写法"><a href="#2、兼容性写法" class="headerlink" title="2、兼容性写法"></a>2、兼容性写法</h5><p>我们只需要根据navigator.userAgent.indexOf(“Firefox”)判断浏览器类型是否是Firefox，是就用DOMMouseScroll,不是就用mousewheel语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//参数说明：</span><br><span class="line">element: 是绑定滚轮事件的元素</span><br><span class="line">fn：是滚轮事件触发执行的函数</span><br><span class="line">function addMousewheel(element,fn)&#123;</span><br><span class="line">    if(navigator.userAgent.indexOf(&quot;Firefox&quot;)!=-1)&#123;</span><br><span class="line">        element.addEventListener(&quot;DOMMouseScroll&quot;,fn,false);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        element.onmousewheel = fn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上是对滚轮事件的兼容性封装函数，那么我们在调用这个函数的时候，还需要在在参数fn的函数里面来统一滚轮的方向和幅度，即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">addMousewheel(div,function(ev)&#123;</span><br><span class="line">    var detail = -ev.detail || ev.wheelDelta/120;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这样统一后，我们不管在哪个浏览器触发滚轮事件，其滚轮方向和滚动幅度都是一致的</p>
+<h1 id="四、获取样式兼容函数getComputedStyle"><a href="#四、获取样式兼容函数getComputedStyle" class="headerlink" title="四、获取样式兼容函数getComputedStyle()"></a>四、获取样式兼容函数getComputedStyle()</h1><h5 id="1、浏览器支持-2"><a href="#1、浏览器支持-2" class="headerlink" title="1、浏览器支持"></a>1、浏览器支持</h5><p>除了IE6-8浏览器不支持getComputedStyle()方法，其他主流浏览器都支持这个方法，IE浏览器有自己的一套获取样式的属性currentStyle()。</p>
+<h5 id="2、getComputedStyle与style、currentStyle的区别"><a href="#2、getComputedStyle与style、currentStyle的区别" class="headerlink" title="2、getComputedStyle与style、currentStyle的区别"></a>2、getComputedStyle与style、currentStyle的区别</h5><h6 id="（1）首先我们来了解一下element-style属性（可读可写）"><a href="#（1）首先我们来了解一下element-style属性（可读可写）" class="headerlink" title="（1）首先我们来了解一下element.style属性（可读可写）"></a>（1）首先我们来了解一下element.style属性（可读可写）</h6><p>element.style属性返回一个CSSStyleDeclaration对象，表示元素的内联style属性，既然它返回的是一个对象，那我们就不能通过直接给styles属性设置字符串（如：element.style = “color：blue”）来设置style,因为它返回的对象时只读的，但style本身还有属性可以用来设置样式（比如：ele.style.color = “blue”）<br> 　　那我们要了解元素样式的信息，仅仅使用style属性是不够的，这是因为它只包含了在元素内联style属性上声明的CSS属性，而不包括来自其他地方声明的样式，那么这时候我们需要使用window.getComputedStyle()来获取属性</p>
+<h6 id="（2）window-getComputedStyle-（仅可读）"><a href="#（2）window-getComputedStyle-（仅可读）" class="headerlink" title="（2）window.getComputedStyle()（仅可读）"></a>（2）window.getComputedStyle()（仅可读）</h6><p>getComputedStyle方法获取的是应用在元素上的所有的CSS属性（包括所有的默认样式），但是这种方法是IE6-8不支持的</p>
+<h6 id="（3）currentStyle"><a href="#（3）currentStyle" class="headerlink" title="（3）currentStyle"></a>（3）currentStyle</h6><p>currentStyle是IE浏览器自娱自乐的一个属性，element.currrentStyle返回的是元素当前应用的最终CSS属性值（包括外联CSS文件,页面中嵌入的<style>属性等）。</p>
+<p>那我们在不知道用户用什么浏览的情况下，我们该怎么准确无误的获取元素的CSS样式呢？下面我们来封装一个获取样式兼容函数</p>
+<h5 id="3、兼容性写法-2"><a href="#3、兼容性写法-2" class="headerlink" title="3、兼容性写法"></a>3、兼容性写法</h5><p>我们只需判断浏览器是否支持getComputedStyle()方法，就能判断用户使用是否是IE6—8浏览器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function getStyle(obj,styleName)&#123;</span><br><span class="line">    if(window.getComputedStyle)&#123;</span><br><span class="line">        var styles = getComputedStyle(obj,null)[styleName];</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        var styles = obj.currentStyle[styleName];</span><br><span class="line">    &#125;</span><br><span class="line">    return styles;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></style></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/23/JS常见一些浏览器兼容问题/" data-id="cjbj1m1fv0000d84qujr6eeu8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/21/JS继承问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS继承问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/23/JS常见一些浏览器兼容问题/">JS常见一些浏览器兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/21/JS继承问题/">JS继承问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/20/js面向对象/">js面向对象</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/25/php面向对象/">php面向对象</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/23/php数据库语句/">php数据库语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 雅玲<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

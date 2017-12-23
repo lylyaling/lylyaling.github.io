@@ -69,6 +69,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS常见一些浏览器兼容问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/23/JS常见一些浏览器兼容问题/" class="article-date">
+  <time datetime="2017-12-23T07:47:15.000Z" itemprop="datePublished">2017-12-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/23/JS常见一些浏览器兼容问题/">JS常见一些浏览器兼容问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开发的过程中，我们就经常会遇到浏览器的兼容问题，因为我们不知道用户是用什么版本的浏览器，对于不同的浏览器，对一些不同的样式或者事件，不同的浏览器支持度页不一样，那么我们今天来总结一部分常见的浏览器兼容事件吧。</p>
+<h1 id="一、事件绑定中的addEventListener-方法"><a href="#一、事件绑定中的addEventListener-方法" class="headerlink" title="一、事件绑定中的addEventListener()方法"></a>一、事件绑定中的addEventListener()方法</h1><h5 id="1、浏览器支持："><a href="#1、浏览器支持：" class="headerlink" title="1、浏览器支持："></a>1、浏览器支持：</h5><p>支持该方法的第一个浏览器的版本号</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-b4d21c88e2984e61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="支持的浏览器.png"></p>
+<p>Internet Explorer 8 及更早IE版本不支持 addEventListener() 方法，，Opera 7.0 及 Opera 更早版本也不支持,但是，对于这些不支持该函数的浏览器，你可以使用 attachEvent() 方法来添加事件</p>
+<h5 id="2、语法"><a href="#2、语法" class="headerlink" title="2、语法"></a>2、语法</h5><p><code>element.addEventListener(event, function, useCapture)</code></p>
+<p>参数说明：<br>event ：必须，字符串，指定事件名，不要使用“on”前缀<br>function：必须，事件触发时执行的函数<br>useCapture: 可选，布尔值，指定事件是否在捕获或者冒泡阶段执行；true：在捕获阶段执行；false：默认，在冒泡阶段执行</p>
+<h5 id="3、兼容性写法"><a href="#3、兼容性写法" class="headerlink" title="3、兼容性写法"></a>3、兼容性写法</h5><p>我们通过判断浏览器是否支持addEventListener函数或者attachEvent函数来执行对应的语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//参数说明：</span><br><span class="line">//element：需要操作的对象</span><br><span class="line">//type：需要绑定的事件名</span><br><span class="line">//fn：事件触发时执行的函数</span><br><span class="line">function addEvent(element, type, fn)&#123;</span><br><span class="line">    if(element.addEventListener)&#123;</span><br><span class="line">        element.addEventListener(type,fn,false);</span><br><span class="line">    &#125;else if(element.attachEvent)&#123;</span><br><span class="line">        element.attachEvent(&quot;on&quot;+type,fn);  </span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        element[&quot;on&quot;+type]=fn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="二、解除事件绑定的removeEventListener-方法"><a href="#二、解除事件绑定的removeEventListener-方法" class="headerlink" title="二、解除事件绑定的removeEventListener()方法"></a>二、解除事件绑定的removeEventListener()方法</h1><h5 id="1、浏览器支持"><a href="#1、浏览器支持" class="headerlink" title="1、浏览器支持"></a>1、浏览器支持</h5><p>支持该方法的第一个浏览器的版本号<br><img src="http://upload-images.jianshu.io/upload_images/7426676-737726f9f6bebe22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="支持的浏览器.png"></p>
+<p> Internet Explorer 8 及更早IE版本不支持 removeEventListener() 方法，Opera 7.0 及 Opera 更早版本也不支持。 但是，对于这些不支持该函数的浏览器，你可以使用 detachEvent() 方法来移除由 attachEvent() 方法添加的事件。</p>
+<h5 id="2、语法-1"><a href="#2、语法-1" class="headerlink" title="2、语法"></a>2、语法</h5><p><code>element.removeEventListener(event, function, useCapture)</code></p>
+<p>参数说明：<br>event：必须，要移除的事件名称，不要加“on”前缀<br>function：必须，指定要移除的函数<br>useCapture：可选，布尔值。指定移除事件是否在捕获或者冒泡阶段执行；true：在捕获阶段执行；false：默认，在冒泡阶段执行。</p>
+<h5 id="3、兼容性写法-1"><a href="#3、兼容性写法-1" class="headerlink" title="3、兼容性写法"></a>3、兼容性写法</h5><p>我们通过判断浏览器是否支持removeEventListener函数或者detachEvent函数来执行对应的语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//参数说明：</span><br><span class="line">//element：需要操作的对象</span><br><span class="line">//type：需要解除绑定的事件名</span><br><span class="line">//fn：事件触发时移除的函数</span><br><span class="line">function removeEvent(element,type,fn)&#123;</span><br><span class="line">	if(element.removeEventListener)&#123;</span><br><span class="line">	      console.log(element.removeEventListener, element, type, fn)</span><br><span class="line">	      element.removeEventListener(type,fn,false);</span><br><span class="line">	&#125;else if(element.detachEvent)&#123;</span><br><span class="line">		element.detachEvent(&quot;on&quot;+type,fn);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		element[&quot;on&quot;+type]=null;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、滚轮事件addMousewhel"><a href="#三、滚轮事件addMousewhel" class="headerlink" title="三、滚轮事件addMousewhel()"></a>三、滚轮事件addMousewhel()</h1><h5 id="1、浏览器支持-1"><a href="#1、浏览器支持-1" class="headerlink" title="1、浏览器支持"></a>1、浏览器支持</h5><p>这里不是区分IE8派和其他派，而是区分Firefox派和其他派，Firefox浏览器一个人使用DOMMouseScroll，其他包括IE6在内的浏览器使用onmousewheel<br>　　那么我们想想想滚动滚轮的时候，还有什么是我们遇到问题呢？<br>（1）、鼠标滚轮是向上滚动还是向下滚动呢？<br>（2）、鼠标滚轮滚动的幅度大小是多少呢？<br>还好，我们可以通过event的某些属性值得到这些信息<br>（1）“mousewheel”事件中的“event.wheelDelta”属性值，如果返回值是正值说明滚轮是向上滚动，如果是负值说明滚轮是向下滚动，返回的值是120的倍数，即幅度大小 = 返回值/120 ;<br>（2）“DOMMouseScroll”事件中“event.datail”属性值：如果返回值是正值说明滚轮是向下滚动，如果是负值说明是向上滚动（与 “event.wheelDelta” 正好相反），幅度大小 = 返回值；</p>
+<h5 id="2、兼容性写法"><a href="#2、兼容性写法" class="headerlink" title="2、兼容性写法"></a>2、兼容性写法</h5><p>我们只需要根据navigator.userAgent.indexOf(“Firefox”)判断浏览器类型是否是Firefox，是就用DOMMouseScroll,不是就用mousewheel语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//参数说明：</span><br><span class="line">element: 是绑定滚轮事件的元素</span><br><span class="line">fn：是滚轮事件触发执行的函数</span><br><span class="line">function addMousewheel(element,fn)&#123;</span><br><span class="line">    if(navigator.userAgent.indexOf(&quot;Firefox&quot;)!=-1)&#123;</span><br><span class="line">        element.addEventListener(&quot;DOMMouseScroll&quot;,fn,false);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        element.onmousewheel = fn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上是对滚轮事件的兼容性封装函数，那么我们在调用这个函数的时候，还需要在在参数fn的函数里面来统一滚轮的方向和幅度，即：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">addMousewheel(div,function(ev)&#123;</span><br><span class="line">    var detail = -ev.detail || ev.wheelDelta/120;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这样统一后，我们不管在哪个浏览器触发滚轮事件，其滚轮方向和滚动幅度都是一致的</p>
+<h1 id="四、获取样式兼容函数getComputedStyle"><a href="#四、获取样式兼容函数getComputedStyle" class="headerlink" title="四、获取样式兼容函数getComputedStyle()"></a>四、获取样式兼容函数getComputedStyle()</h1><h5 id="1、浏览器支持-2"><a href="#1、浏览器支持-2" class="headerlink" title="1、浏览器支持"></a>1、浏览器支持</h5><p>除了IE6-8浏览器不支持getComputedStyle()方法，其他主流浏览器都支持这个方法，IE浏览器有自己的一套获取样式的属性currentStyle()。</p>
+<h5 id="2、getComputedStyle与style、currentStyle的区别"><a href="#2、getComputedStyle与style、currentStyle的区别" class="headerlink" title="2、getComputedStyle与style、currentStyle的区别"></a>2、getComputedStyle与style、currentStyle的区别</h5><h6 id="（1）首先我们来了解一下element-style属性（可读可写）"><a href="#（1）首先我们来了解一下element-style属性（可读可写）" class="headerlink" title="（1）首先我们来了解一下element.style属性（可读可写）"></a>（1）首先我们来了解一下element.style属性（可读可写）</h6><p>element.style属性返回一个CSSStyleDeclaration对象，表示元素的内联style属性，既然它返回的是一个对象，那我们就不能通过直接给styles属性设置字符串（如：element.style = “color：blue”）来设置style,因为它返回的对象时只读的，但style本身还有属性可以用来设置样式（比如：ele.style.color = “blue”）<br> 　　那我们要了解元素样式的信息，仅仅使用style属性是不够的，这是因为它只包含了在元素内联style属性上声明的CSS属性，而不包括来自其他地方声明的样式，那么这时候我们需要使用window.getComputedStyle()来获取属性</p>
+<h6 id="（2）window-getComputedStyle-（仅可读）"><a href="#（2）window-getComputedStyle-（仅可读）" class="headerlink" title="（2）window.getComputedStyle()（仅可读）"></a>（2）window.getComputedStyle()（仅可读）</h6><p>getComputedStyle方法获取的是应用在元素上的所有的CSS属性（包括所有的默认样式），但是这种方法是IE6-8不支持的</p>
+<h6 id="（3）currentStyle"><a href="#（3）currentStyle" class="headerlink" title="（3）currentStyle"></a>（3）currentStyle</h6><p>currentStyle是IE浏览器自娱自乐的一个属性，element.currrentStyle返回的是元素当前应用的最终CSS属性值（包括外联CSS文件,页面中嵌入的<style>属性等）。</p>
+<p>那我们在不知道用户用什么浏览的情况下，我们该怎么准确无误的获取元素的CSS样式呢？下面我们来封装一个获取样式兼容函数</p>
+<h5 id="3、兼容性写法-2"><a href="#3、兼容性写法-2" class="headerlink" title="3、兼容性写法"></a>3、兼容性写法</h5><p>我们只需判断浏览器是否支持getComputedStyle()方法，就能判断用户使用是否是IE6—8浏览器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function getStyle(obj,styleName)&#123;</span><br><span class="line">    if(window.getComputedStyle)&#123;</span><br><span class="line">        var styles = getComputedStyle(obj,null)[styleName];</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        var styles = obj.currentStyle[styleName];</span><br><span class="line">    &#125;</span><br><span class="line">    return styles;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></style></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/23/JS常见一些浏览器兼容问题/" data-id="cjbj1m1fv0000d84qujr6eeu8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS继承问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/21/JS继承问题/" class="article-date">
@@ -107,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/21/JS继承问题/" data-id="cjbgh6s9c0000u54q3q6q2lmi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/21/JS继承问题/" data-id="cjbj1m1g40002d84qiyrlmhjo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/20/js面向对象/" data-id="cjbgh6s9l0003u54qimru3k66" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/20/js面向对象/" data-id="cjbj1m1gy000cd84ql156l0k2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/25/php面向对象/" data-id="cjbgh6sae0009u54qcp3ggxz8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/25/php面向对象/" data-id="cjbj1m1gq0009d84qhztztr9o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/23/php数据库语句/" data-id="cjbgh6sa40006u54qt5qxenk7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/23/php数据库语句/" data-id="cjbj1m1gu000bd84qa2nah5gi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjbgh6s9k0002u54qgt4z4v8b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjbj1m1g60003d84qerb3fkex" class="article-share-link">Share</a>
       
       
     </footer>
@@ -373,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjbgh6sa00004u54qyrmpx4tt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjbj1m1gs000ad84qwvbmg0n0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -423,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cjbgh6sa20005u54qmqnqho0n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cjbj1m1gf0006d84qdmvtb6ss" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cjbgh6sa60007u54qiz0o2qeq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cjbj1m1g80004d84qmzrwg7bi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -507,54 +569,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cjbgh6sah000bu54qoq2s1rv8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-php数组" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/14/php数组/" class="article-date">
-  <time datetime="2017-11-14T11:18:34.000Z" itemprop="datePublished">2017-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/14/php数组/">php数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、数组创建"><a href="#一、数组创建" class="headerlink" title="一、数组创建"></a>一、数组创建</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//1、创建数组</span><br><span class="line"><span class="variable">$arr</span> = array(<span class="string">"first"</span>,<span class="string">"second"</span>,<span class="string">"third"</span>);</span><br><span class="line">print_r(<span class="variable">$arr</span>); </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&lt;br/&gt;"</span>;</span><br><span class="line">//获得数组里的元素</span><br><span class="line"><span class="variable">$first</span> = <span class="variable">$arr</span>[0];</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$first</span>;</span><br><span class="line">//修改第二个元素</span><br><span class="line"><span class="variable">$arr</span>[1] = <span class="string">"第二个"</span>;</span><br><span class="line">print_r(<span class="variable">$arr</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"&lt;br/&gt;"</span></span><br><span class="line">//获得数组的长度</span><br><span class="line"><span class="variable">$value</span> = count(<span class="variable">$arr</span>);</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$value</span>;     //3</span><br></pre></td></tr></table></figure>
-<h1 id="二、关联数组的创建"><a href="#二、关联数组的创建" class="headerlink" title="二、关联数组的创建"></a>二、关联数组的创建</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arr</span> = array(<span class="string">"年龄"</span>=&gt;<span class="string">"18"</span>,<span class="string">"sex"</span>=&gt;<span class="string">"男"</span>); //下标是姓名，不再是下标数字0、1、2等</span><br></pre></td></tr></table></figure>
-<p>关联数组类似js里面的对象  </p>
-<h1 id="三、数组遍历"><a href="#三、数组遍历" class="headerlink" title="三、数组遍历"></a>三、数组遍历</h1><p>第一种：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="variable">$i</span> = 0;<span class="variable">$i</span> &lt; count(<span class="variable">$arr</span>); <span class="variable">$i</span>++)&#123; &#125;  不能对关联数组作用</span><br></pre></td></tr></table></figure></p>
-<p>第二种：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foreach(<span class="variable">$arr</span> as <span class="variable">$key</span>=&gt;<span class="variable">$val</span>)&#123; &#125;  两种数组都能搞定，推荐使用</span><br></pre></td></tr></table></figure></p>
-<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><p>比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arr</span> = array(<span class="string">"name"</span>=&gt;<span class="string">"蓝欧"</span>，<span class="string">"sex"</span>=&gt;<span class="string">"男"</span>，“third”);</span><br></pre></td></tr></table></figure></p>
-<p>这个数组里面的元素对应的key值是name、sex、0</p>
-<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><h6 id="1、数组创建方式：array"><a href="#1、数组创建方式：array" class="headerlink" title="1、数组创建方式：array( )"></a>1、数组创建方式：array( )</h6><p>在数组创建的时候有两种书写方式：<br>第一种：array(“值1”,”值2”,”值3”);<br>第二种：array(“键1”=&gt;”值1”,”键2”=&gt;”值2”);</p>
-<h6 id="2、获得数组的元素"><a href="#2、获得数组的元素" class="headerlink" title="2、获得数组的元素"></a>2、获得数组的元素</h6><p>第一种创建方式其实是将里面的值默认添加一个键，从0开始添加<br>第二种获得的方式是通过键的方式来获得$arr[‘键’]；</p>
-<h6 id="3、遍历数组"><a href="#3、遍历数组" class="headerlink" title="3、遍历数组"></a>3、遍历数组</h6><p>for循环，只能使用第一种创建方式<br>foreach($arr  as  $key=&gt;$val){  } 能够使用两种创建方式</p>
-<h6 id="4、数组长度的函数"><a href="#4、数组长度的函数" class="headerlink" title="4、数组长度的函数"></a>4、数组长度的函数</h6><p>count($arr)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cjbgh6saf000au54qsnkbxjkz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cjbj1m1gp0008d84qdcn6sb5k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -598,6 +613,10 @@
       <ul>
         
           <li>
+            <a href="/2017/12/23/JS常见一些浏览器兼容问题/">JS常见一些浏览器兼容问题</a>
+          </li>
+        
+          <li>
             <a href="/2017/12/21/JS继承问题/">JS继承问题</a>
           </li>
         
@@ -611,10 +630,6 @@
         
           <li>
             <a href="/2017/11/23/php数据库语句/">php数据库语句</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/17/AJAX介绍及创建/">AJAX介绍及创建</a>
           </li>
         
       </ul>
