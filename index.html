@@ -69,6 +69,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-canvas基本用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/25/canvas基本用法/" class="article-date">
+  <time datetime="2017-12-25T13:21:16.000Z" itemprop="datePublished">2017-12-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/25/canvas基本用法/">canvas基本用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、canvas元素"><a href="#一、canvas元素" class="headerlink" title="一、canvas元素"></a>一、canvas元素</h1><h3 id="1、canvas写法："><a href="#1、canvas写法：" class="headerlink" title="1、canvas写法："></a>1、canvas写法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;mycanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;您的浏览器不支持canvas&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2、canvas宽高设置"><a href="#2、canvas宽高设置" class="headerlink" title="2、canvas宽高设置"></a>2、canvas宽高设置</h3><p>在使用canvas元素时必须设置宽度和高度，指定可以绘画的区域大小，但是宽高设置有一个注意的问题</p>
+<p>样例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:5px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.strokeRect(0, 0, 100, 100);</span><br><span class="line">        context.fillRect(101, 0, 100, 100);</span><br><span class="line">        context.stroke();</span><br><span class="line">		context.fill();</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>在这里我们直接在canvas标签内设置了绘画区域的大小，在浏览器中显示的效果是这样的<br><img src="http://upload-images.jianshu.io/upload_images/7426676-90896322ca9d9820.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>如果我们用常规CSS设置宽高的话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				width:500px;</span><br><span class="line">				height:500px;</span><br><span class="line">				border:5px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.strokeRect(0, 0, 100, 100);</span><br><span class="line">        context.fillRect(101, 0, 100, 100);</span><br><span class="line">        context.stroke();</span><br><span class="line">		context.fill();</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>这时浏览器中显示的效果就是这样<br><img src="http://upload-images.jianshu.io/upload_images/7426676-4772844341749958.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>明明是宽高一样的矩形，为什么会出现拉长的效果呢？<br>　　其实canvas有自己默认的宽高300px*150px,而且在canvas行间样式定义width、height跟在style中定义width、height是有所区别的：canvas标签的width和height是canvas在浏览器中被渲染的高度和宽度。如果canvas的width和height没指定或者值不正确，就被设置成默认值{width:300px;height:150px}；<br>　　这就解释了为什么第二种写法导致图形被拉伸，原因是绘画区域的大小没有在canvas行间样式中定义，所以被默认为宽高的默认值，而style中设置为{width:500px;height:500px;}将绘画区域的高度拉伸了。</p>
+<h3 id="3、canvas的浏览器支持"><a href="#3、canvas的浏览器支持" class="headerlink" title="3、canvas的浏览器支持"></a>3、canvas的浏览器支持</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;mycanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;您的浏览器不支持canvas&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<p>某些较老的浏览器（尤其是IE9之前的IE浏览器）不支持canvas元素，在这些浏览器上，就会显示我们的提示“您的浏览器不支持canvas”，因为我们在canvas标签中提供了替换内容。支持canvas的浏览器将会忽略标签中的提示内容，并且正常的渲染canvas</p>
+<h1 id="二、渲染上下文"><a href="#二、渲染上下文" class="headerlink" title="二、渲染上下文"></a>二、渲染上下文</h1><p>canvas元素创造了一个固定大小的画布，它公开了一个或多个喧嚷上下文，其可以用来绘制和处理要展示的内容，这里我们将2d渲染上下文。<br>　　canvas起初是空白的，默认背景色是透明的。我们在绘制之前，首先脚本需要找到渲染上下文，canvas元素有一个叫做getContext()的方法来获得渲染上下文和它的绘画功能，getContext()只有一个参数，上下文的格式，这里对于2d图像而言，可以在script中使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//获取canvas的DOM对象</span><br><span class="line">var canvas  =document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">//获得渲染上下文</span><br><span class="line">var context = canvas.getContext(&quot;2d&quot;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/25/canvas基本用法/" data-id="cjbm8r7oq0000d1661udqnkcc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS常见一些浏览器兼容问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/23/JS常见一些浏览器兼容问题/" class="article-date">
@@ -121,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/23/JS常见一些浏览器兼容问题/" data-id="cjbj1m1fv0000d84qujr6eeu8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/23/JS常见一些浏览器兼容问题/" data-id="cjbm8r7p40003d166ixdy34mh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/21/JS继承问题/" data-id="cjbj1m1g40002d84qiyrlmhjo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/21/JS继承问题/" data-id="cjbm8r7p10002d166qmr24g9m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/20/js面向对象/" data-id="cjbj1m1gy000cd84ql156l0k2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/20/js面向对象/" data-id="cjbm8r7p90005d1661o45298g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/25/php面向对象/" data-id="cjbj1m1gq0009d84qhztztr9o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/25/php面向对象/" data-id="cjbm8r7q8000dd166yyi0895o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/23/php数据库语句/" data-id="cjbj1m1gu000bd84qa2nah5gi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/23/php数据库语句/" data-id="cjbm8r7pj0008d166s22favyc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -388,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjbj1m1g60003d84qerb3fkex" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjbm8r7p70004d166nclmln3w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -435,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjbj1m1gs000ad84qwvbmg0n0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjbm8r7q6000cd166mjo5ws8r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -485,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cjbj1m1gf0006d84qdmvtb6ss" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cjbm8r7pq000ad166lla1xcht" class="article-share-link">Share</a>
       
       
     </footer>
@@ -524,52 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cjbj1m1g80004d84qmzrwg7bi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-php数组函数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/14/php数组函数/" class="article-date">
-  <time datetime="2017-11-14T12:13:15.000Z" itemprop="datePublished">2017-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/14/php数组函数/">php数组函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1、添加元素-array-push-添加至末尾"><a href="#1、添加元素-array-push-添加至末尾" class="headerlink" title="1、添加元素 array_push() 添加至末尾"></a>1、添加元素 array_push() 添加至末尾</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;蓝欧&quot;,&quot;科技&quot;,&quot;中国&quot;,&quot;北京&quot;);</span><br><span class="line">array_push($arr,&quot;广州&quot;);</span><br></pre></td></tr></table></figure>
-<p>如果想添加一个关联数组，不能用<code>arrar_push($arr,&quot;name&quot;=&gt;&quot;张三&quot;)</code>,直接用<code>$arr[&quot;name&quot;]=&quot;重中之中&quot;</code></p>
-<h4 id="2、删除元素-array-pop-删除末尾元素"><a href="#2、删除元素-array-pop-删除末尾元素" class="headerlink" title="2、删除元素 array_pop() 删除末尾元素"></a>2、删除元素 array_pop() 删除末尾元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array_pop($arr);</span><br></pre></td></tr></table></figure>
-<h4 id="3、array-unshift-数组，值-在数组开头添加元素"><a href="#3、array-unshift-数组，值-在数组开头添加元素" class="headerlink" title="3、array_unshift(数组，值)在数组开头添加元素"></a>3、array_unshift(数组，值)在数组开头添加元素</h4><h4 id="4、arrar-shift-数组，值-删除数组开头元素"><a href="#4、arrar-shift-数组，值-删除数组开头元素" class="headerlink" title="4、arrar_shift(数组，值) 删除数组开头元素"></a>4、arrar_shift(数组，值) 删除数组开头元素</h4><h4 id="5、array-splice-替换数组元素"><a href="#5、array-splice-替换数组元素" class="headerlink" title="5、array_splice()  替换数组元素"></a>5、array_splice()  替换数组元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;first&quot;,&quot;蓝欧&quot;,&quot;中国&quot;,&quot;第一&quot;);</span><br><span class="line">array_splice($arr,0,1,&quot;nb&quot;);   //从0下标开始，用”nb“替换一个元素，即替换掉first</span><br><span class="line">array_splice($arr,2,1);  如果没有第四个参数，就将选中的元素删除了</span><br><span class="line">array_splice($arr 2,0,&quot;你好&quot;); //添加一个元素</span><br><span class="line">array_splice($arr,2,0,array(&quot;hello&quot;,&quot;world&quot;)); //这样可以插入多个元素</span><br></pre></td></tr></table></figure>
-<h4 id="6、判断数组中是否包含指定的值-in-array-值-数组"><a href="#6、判断数组中是否包含指定的值-in-array-值-数组" class="headerlink" title="6、判断数组中是否包含指定的值 in_array(值,数组)"></a>6、判断数组中是否包含指定的值 in_array(值,数组)</h4><p>注意：不能判断key，只能判断值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;first&quot;,&quot;second&quot;);</span><br><span class="line">$value = in_array(&quot;iii&quot;,$arr);  //空</span><br><span class="line">if($value)&#123;</span><br><span class="line">	echo &quot;存在&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &quot;不存在&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="7、关联数组获得所有键名"><a href="#7、关联数组获得所有键名" class="headerlink" title="7、关联数组获得所有键名"></a>7、关联数组获得所有键名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;name&quot;=&gt;&quot;list&quot;,&quot;sex&quot;=&gt;&quot;nv&quot;);</span><br><span class="line">$value = array_keys($arr);  //得到所有键名，存入数组</span><br><span class="line">print_r($value);</span><br></pre></td></tr></table></figure>
-<h4 id="8、关联数组判断键名是否存在"><a href="#8、关联数组判断键名是否存在" class="headerlink" title="8、关联数组判断键名是否存在"></a>8、关联数组判断键名是否存在</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;name&quot;=&gt;&quot;list&quot;,&quot;sex&quot;=&gt;&quot;nv&quot;);</span><br><span class="line">$value=array_key_exists(&quot;name&quot;,$arr);</span><br><span class="line">if($value)&#123;</span><br><span class="line">	echo &quot;存在&quot;;</span><br><span class="line">&#125; else&#123;</span><br><span class="line">	echo &quot;不存在&quot;; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="9、数组排序"><a href="#9、数组排序" class="headerlink" title="9、数组排序"></a>9、数组排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$arr = array(&quot;first&quot;,&quot;second&quot;,&quot;a&quot;,&quot;m&quot;);</span><br><span class="line">sort($arr);</span><br><span class="line">print_r($arr);  //a,first,m,second 按字母顺序排序</span><br><span class="line">$arr = array(19,2,16,34);</span><br><span class="line">sort($arr);</span><br><span class="line">print_r($arr); //2,16,19,34 按数字大小排序</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cjbj1m1gp0008d84qdcn6sb5k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cjbm8r7pc0007d166eackgyz6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -613,6 +616,10 @@
       <ul>
         
           <li>
+            <a href="/2017/12/25/canvas基本用法/">canvas基本用法</a>
+          </li>
+        
+          <li>
             <a href="/2017/12/23/JS常见一些浏览器兼容问题/">JS常见一些浏览器兼容问题</a>
           </li>
         
@@ -626,10 +633,6 @@
         
           <li>
             <a href="/2017/11/25/php面向对象/">php面向对象</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/23/php数据库语句/">php数据库语句</a>
           </li>
         
       </ul>
