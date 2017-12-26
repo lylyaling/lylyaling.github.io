@@ -69,6 +69,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-php多维数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/14/php多维数组/" class="article-date">
+  <time datetime="2017-11-14T13:29:09.000Z" itemprop="datePublished">2017-11-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/14/php多维数组/">php多维数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1、多维数组的创建"><a href="#1、多维数组的创建" class="headerlink" title="1、多维数组的创建"></a>1、多维数组的创建</h4><p>这种写法是先定义一个一维数组，再将这个一维数组当做新创建的二维数组的元素传入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$myfirst = array(&quot;中国&quot;);</span><br><span class="line">$arr = array(&quot;first&quot;,&quot;second&quot;,$myfirst);</span><br><span class="line">$arr1 = array($arr,&quot;my&quot;);</span><br><span class="line">echo $arr1[0][2][0];   // 结果是中国</span><br></pre></td></tr></table></figure>
+<h4 id="2、数组嵌套"><a href="#2、数组嵌套" class="headerlink" title="2、数组嵌套"></a>2、数组嵌套</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$people = array(&quot;name&quot;=&gt;&quot;张三&quot;,&quot;sex&quot;=&gt;&quot;男&quot;,&quot;age&quot;=&gt;&quot;19&quot;);</span><br><span class="line">$student = array($people);</span><br><span class="line">print_r($student[0]);</span><br><span class="line">echo $student[0][&quot;name&quot;];   //张三</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cjbnpwr8z0008rk66qdg3dkzn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-php数组函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/14/php数组函数/" class="article-date">
@@ -104,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cjbm8r7pn0009d166cy75mc51" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cjbnpwr95000crk66zo1i8ppp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -151,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cjbm8r7q3000bd166bezbinhp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cjbnpwr92000ark66m63rd4fi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cjbm8r7pb0006d166vsw9cxqi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cjbnpwr8u0007rk66l48yddyg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -254,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cjbm8r7ow0001d1669w59f75g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cjbnpwr8i0003rk663gyb0f51" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,6 +337,10 @@
       <ul>
         
           <li>
+            <a href="/2017/12/26/canvas绘制基本图形/">canvas绘制基本图形</a>
+          </li>
+        
+          <li>
             <a href="/2017/12/25/canvas基本用法/">canvas基本用法</a>
           </li>
         
@@ -311,10 +354,6 @@
         
           <li>
             <a href="/2017/12/20/js面向对象/">js面向对象</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/25/php面向对象/">php面向对象</a>
           </li>
         
       </ul>

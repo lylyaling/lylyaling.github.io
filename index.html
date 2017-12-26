@@ -69,6 +69,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-canvas绘制基本图形" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/26/canvas绘制基本图形/" class="article-date">
+  <time datetime="2017-12-26T14:18:20.000Z" itemprop="datePublished">2017-12-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/26/canvas绘制基本图形/">canvas绘制基本图形</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas width=&quot;500px&quot; height=&quot;500px&quot; id=&quot;mycanvas&quot;&gt;</span><br><span class="line">			对不起，您的浏览器版本过低，点击&lt;a href=&quot;#&quot;&gt;下载&lt;/a&gt;</span><br><span class="line">		&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        //获取canvas节点</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		//获取canvas画布的上下文</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="绘制清单"><a href="#绘制清单" class="headerlink" title="绘制清单"></a>绘制清单</h3><p><img src="http://upload-images.jianshu.io/upload_images/7426676-9725cf2c68c8a39d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h1 id="一、画线"><a href="#一、画线" class="headerlink" title="一、画线"></a>一、画线</h1><p><img src="http://upload-images.jianshu.io/upload_images/7426676-590c71a1b4a29573.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-38148811db598977.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>通过学习了绘制直线，我们可以来实现一个简单的画板了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;你的浏览器不支持canvas&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context  =canvas.getContext(&quot;2d&quot;);</span><br><span class="line">		//鼠标按下并且鼠标移动才能画线</span><br><span class="line">		canvas.onmousedown = function(e)&#123;</span><br><span class="line">			var ev = e || window.event;</span><br><span class="line">            //获取鼠标按下时坐标</span><br><span class="line">			var x = ev.clientX-canvas.offsetLeft;</span><br><span class="line">			var y = ev.clientY-canvas.offsetTop;</span><br><span class="line">			context.beginPath();</span><br><span class="line">			context.moveTo(x,y);</span><br><span class="line">			canvas.onmousemove = function(e)&#123;</span><br><span class="line">				var ev = e || window.event;</span><br><span class="line">                //获取鼠标移动时的坐标</span><br><span class="line">				var xx = ev.clientX-canvas.offsetLeft;</span><br><span class="line">				var yy = ev.clientY-canvas.offsetTop;</span><br><span class="line">				context.lineTo(xx,yy);</span><br><span class="line">				context.stroke();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		document.onmouseup = function()&#123;</span><br><span class="line">			canvas.onmousemove = &quot;&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-24b41ab06299cfd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h1 id="二、绘制矩形"><a href="#二、绘制矩形" class="headerlink" title="二、绘制矩形"></a>二、绘制矩形</h1><p>方法一：绘制一个填充的矩形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var colorArr = [&quot;red&quot;,&quot;blue&quot;,&quot;yellow&quot;,&quot;whitesmoke&quot;];</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context  =canvas.getContext(&quot;2d&quot;);</span><br><span class="line">        context.beginPath();</span><br><span class="line">		context.fillStyle = &quot;palevioletred&quot;;</span><br><span class="line">        context.fillRect(100,100,200,100);   </span><br><span class="line">        context.fill();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-3ec56bb2f49882d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>方法二：绘制一个矩形的边框,不能填充颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">context.beginPath();</span><br><span class="line">        context.strokeRect(100,100,200,100);   </span><br><span class="line">        context.stroke();</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-6b36f86aef565f26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>方法三：绘制一个矩形边框，可以填充颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.beginPath();</span><br><span class="line">		context.fillStyle = &quot;palevioletred&quot;;</span><br><span class="line">		context.rect(100,100,200,100);</span><br><span class="line">		context.fill();</span><br><span class="line">		context.stroke();</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-ffa15ff9d415c199.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>通过学习了矩形，我们可以来实现一个国际象棋的棋盘了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">        //方法一</span><br><span class="line">//		var colors = [&quot;white&quot;,&quot;black&quot;];</span><br><span class="line">//		for(var i=0;i&lt;8;i++)&#123;</span><br><span class="line">//			for(var j=0;j&lt;8;j++)&#123;</span><br><span class="line">//				context.beginPath();</span><br><span class="line">//				if( i % 2 == 0 &amp;&amp; j % 2 != 0 || i % 2 != 0 &amp;&amp; j % 2 == 0 )&#123;</span><br><span class="line">//					context.fillStyle = colors[0];</span><br><span class="line">//				&#125;else&#123;</span><br><span class="line">//					context.fillStyle = colors[1];</span><br><span class="line">//				&#125;</span><br><span class="line">//				context.fillRect(i*100,j*100,100,100);</span><br><span class="line">//			&#125;</span><br><span class="line">//		&#125;</span><br><span class="line">		//方法二</span><br><span class="line">		for(var i=0;i&lt;800;i+=200)&#123;</span><br><span class="line">			for(var j=0;j&lt;800;j+=200)&#123;</span><br><span class="line">				context.beginPath();</span><br><span class="line">				context.fillRect(i,j,100,100);</span><br><span class="line">				context.fillRect(i+100,j+100,100,100);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>这里有两个方法，第一种是分别设置白色和黑色的矩形<br>第二种是只设置黑色的矩形<br><img src="http://upload-images.jianshu.io/upload_images/7426676-bc95645faef78a29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h1 id="三、绘制圆形"><a href="#三、绘制圆形" class="headerlink" title="三、绘制圆形"></a>三、绘制圆形</h1><p>前两个参数是圆心的坐标，第三个参数是半径，第四五个参数是圆开始画的角度和结束的角度（PI表示）最后一个参数是布尔：true：逆时针，false:(默认)顺时针<br><img src="http://upload-images.jianshu.io/upload_images/7426676-ef5e9ad1ed320fe4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"><br><img src="http://upload-images.jianshu.io/upload_images/7426676-e262bfc7759f6557.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>学习了圆的绘制，我们可以绘制一个太极八卦图了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;太极八卦图&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid cornflowerblue;</span><br><span class="line">				background-color: #ADD8E6;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;您的浏览器不支持canvas&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context  =canvas.getContext(&quot;2d&quot;);</span><br><span class="line">		</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.arc(250,250,100,0,Math.PI);</span><br><span class="line">		context.fillStyle = &quot;#000000&quot;;</span><br><span class="line">		context.fill();</span><br><span class="line">		</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.arc(250,250,100,0,Math.PI,true);</span><br><span class="line">		context.fillStyle = &quot;white&quot;;</span><br><span class="line">		context.fill();</span><br><span class="line">		</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.arc(300,250,50,0,Math.PI,true);</span><br><span class="line">		context.fillStyle = &quot;#000000&quot;;</span><br><span class="line">		context.fill();</span><br><span class="line">		</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.arc(200,250,50,0,Math.PI);</span><br><span class="line">		context.fillStyle = &quot;white&quot;;</span><br><span class="line">		context.fill();</span><br><span class="line">		</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.arc(300,250,10,0,Math.PI*2);</span><br><span class="line">		context.fillStyle = &quot;white&quot;;</span><br><span class="line">		context.fill();</span><br><span class="line">		</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.arc(200,250,10,0,Math.PI*2);</span><br><span class="line">		context.fillStyle = &quot;#000000&quot;;</span><br><span class="line">		context.fill();</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-bb0e0cdc8830bb28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h1 id="四、绘制文字"><a href="#四、绘制文字" class="headerlink" title="四、绘制文字"></a>四、绘制文字</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">         context.beginPath();</span><br><span class="line">context.textBaseline = &quot;middle&quot;; //文字垂直对齐方法</span><br><span class="line">context.textAlign = &quot;center&quot;; //文字水平对齐方法</span><br><span class="line">context.font = &quot;bold 20px Arial&quot;;  //(加粗 大小）字体样式</span><br><span class="line">context.fillStyle = &quot;red&quot;;</span><br><span class="line">context.fillText(&quot;你好&quot;,100,100); //文字内容，每个横坐标定长，纵坐标随机</span><br></pre></td></tr></table></figure>
+<p>我们可以利用这种设置文字的样式，绘制一个验证码的图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;100&quot; height=&quot;30&quot;&gt;你的浏览器不支持canvas&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">		//随机(大小，位置随机但不重叠)字符（透明度），随机背景颜色（浅色200——250）</span><br><span class="line">		//干扰项：3个左右的随机（半径随机，位置随机:有部分在画布上）干扰圆</span><br><span class="line">				//3个左右的随机（长度随机，位置随机）干扰线</span><br><span class="line">		var strStore = &quot;abcdefghijklmnopqrstuvwxyzABCDEFJHIJKLMNOPQRSTUVQXYZ0123456789&quot;;</span><br><span class="line">		//随机函数</span><br><span class="line">		function randNum(min,max)&#123;</span><br><span class="line">			return parseInt(Math.random()*(max-min))+min;</span><br><span class="line">		&#125;</span><br><span class="line">		//随机颜色</span><br><span class="line">		var colors = `rgb($&#123;randNum(200,255)&#125;,$&#123;randNum(200,255)&#125;,$&#123;randNum(200,255)&#125;)`</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.fillStyle = colors;</span><br><span class="line">		context.fillRect(0,0,canvas.width,canvas.height);</span><br><span class="line">		context.globalAlpha = 0.7;</span><br><span class="line">		context.fill();</span><br><span class="line">		for(var i=0;i&lt;5;i++)&#123;</span><br><span class="line">			var str = strStore[randNum(0,strStore.length)];</span><br><span class="line">			context.beginPath();</span><br><span class="line">			context.textBaseline = &quot;middle&quot;; //文字垂直对齐方法</span><br><span class="line">			context.textAlign = &quot;center&quot;; //文字水平对齐方法</span><br><span class="line">			context.font = &quot;bold &quot;+randNum(20,30)+&quot;px Arial&quot;;  //(加粗 大小）字体样式</span><br><span class="line">			context.fillStyle = `rgb($&#123;randNum(0,200)&#125;,$&#123;randNum(0,200)&#125;,$&#123;randNum(0,200)&#125;)`;</span><br><span class="line">			context.fillText(str,10+i*20,randNum(10,20)); //文字内容，每个横坐标定长，纵坐标随机</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		//干扰项:</span><br><span class="line">		for(var i=0;i&lt;3;i++)&#123;</span><br><span class="line">			//干扰圆</span><br><span class="line">			context.beginPath();</span><br><span class="line">			context.arc(randNum(0,100),randNum(0,30),randNum(3,20),0,Math.PI*2);</span><br><span class="line">			context.strokeStyle = `rgb($&#123;randNum(0,200)&#125;,$&#123;randNum(0,200)&#125;,$&#123;randNum(0,200)&#125;)`;</span><br><span class="line">			context.stroke();</span><br><span class="line">			//干扰线</span><br><span class="line">			context.beginPath();</span><br><span class="line">			context.moveTo(randNum(0,100),randNum(0,30));</span><br><span class="line">			context.lineTo(randNum(0,100),randNum(0,30));</span><br><span class="line">			context.strokeStyle = `rgb($&#123;randNum(0,200)&#125;,$&#123;randNum(0,200)&#125;,$&#123;randNum(0,200)&#125;)`;</span><br><span class="line">			context.stroke();</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-74af8ad65daf293e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/26/canvas绘制基本图形/" data-id="cjbnpwr8d0001rk66414syl2l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-canvas基本用法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/25/canvas基本用法/" class="article-date">
@@ -107,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/25/canvas基本用法/" data-id="cjbm8r7oq0000d1661udqnkcc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/25/canvas基本用法/" data-id="cjbnpwr8l0004rk66bfogj9sy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/23/JS常见一些浏览器兼容问题/" data-id="cjbm8r7p40003d166ixdy34mh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/23/JS常见一些浏览器兼容问题/" data-id="cjbnpwr8g0002rk6643f9adhg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/21/JS继承问题/" data-id="cjbm8r7p10002d166qmr24g9m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/21/JS继承问题/" data-id="cjbnpwr870000rk66uel74hy4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -283,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/20/js面向对象/" data-id="cjbm8r7p90005d1661o45298g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/20/js面向对象/" data-id="cjbnpwr8o0005rk66n3nbgza2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -337,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/25/php面向对象/" data-id="cjbm8r7q8000dd166yyi0895o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/25/php面向对象/" data-id="cjbnpwr97000drk66o2n5whnz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -373,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/23/php数据库语句/" data-id="cjbm8r7pj0008d166s22favyc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/23/php数据库语句/" data-id="cjbnpwr900009rk66lsa3fgwd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -436,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjbm8r7p70004d166nclmln3w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjbnpwr8r0006rk66q2eqot2p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -483,7 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjbm8r7q6000cd166mjo5ws8r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjbnpwr93000brk66c8ogj5sm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -533,46 +597,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cjbm8r7pq000ad166lla1xcht" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-php多维数组" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/14/php多维数组/" class="article-date">
-  <time datetime="2017-11-14T13:29:09.000Z" itemprop="datePublished">2017-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/14/php多维数组/">php多维数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1、多维数组的创建"><a href="#1、多维数组的创建" class="headerlink" title="1、多维数组的创建"></a>1、多维数组的创建</h4><p>这种写法是先定义一个一维数组，再将这个一维数组当做新创建的二维数组的元素传入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$myfirst = array(&quot;中国&quot;);</span><br><span class="line">$arr = array(&quot;first&quot;,&quot;second&quot;,$myfirst);</span><br><span class="line">$arr1 = array($arr,&quot;my&quot;);</span><br><span class="line">echo $arr1[0][2][0];   // 结果是中国</span><br></pre></td></tr></table></figure>
-<h4 id="2、数组嵌套"><a href="#2、数组嵌套" class="headerlink" title="2、数组嵌套"></a>2、数组嵌套</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$people = array(&quot;name&quot;=&gt;&quot;张三&quot;,&quot;sex&quot;=&gt;&quot;男&quot;,&quot;age&quot;=&gt;&quot;19&quot;);</span><br><span class="line">$student = array($people);</span><br><span class="line">print_r($student[0]);</span><br><span class="line">echo $student[0][&quot;name&quot;];   //张三</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cjbm8r7pc0007d166eackgyz6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cjbnpwr99000erk669jzbq85f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -616,6 +641,10 @@
       <ul>
         
           <li>
+            <a href="/2017/12/26/canvas绘制基本图形/">canvas绘制基本图形</a>
+          </li>
+        
+          <li>
             <a href="/2017/12/25/canvas基本用法/">canvas基本用法</a>
           </li>
         
@@ -629,10 +658,6 @@
         
           <li>
             <a href="/2017/12/20/js面向对象/">js面向对象</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/25/php面向对象/">php面向对象</a>
           </li>
         
       </ul>
