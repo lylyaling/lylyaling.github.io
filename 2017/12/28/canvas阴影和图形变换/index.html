@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>canvas阴影和图形变换 | 刘雅玲</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、阴影设置1、阴影的颜色：值为标准的CSS颜色值，用于设定阴影颜色效果，默认是全透明的黑色1context.shadowColor = color; 2、阴影模糊度：用户设定阴影的模糊程度，其数值不跟像素挂钩，默认为01context.shadowBlur = 5; 3、阴影的偏移：shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离。负值表示阴影">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas阴影和图形变换">
+<meta property="og:url" content="http://yoursite.com/2017/12/28/canvas阴影和图形变换/index.html">
+<meta property="og:site_name" content="刘雅玲">
+<meta property="og:description" content="一、阴影设置1、阴影的颜色：值为标准的CSS颜色值，用于设定阴影颜色效果，默认是全透明的黑色1context.shadowColor = color; 2、阴影模糊度：用户设定阴影的模糊程度，其数值不跟像素挂钩，默认为01context.shadowBlur = 5; 3、阴影的偏移：shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离。负值表示阴影">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-1883281ac3fad951.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-4881d690bfd71ffa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-afe47e4335fc10f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-4d9731c5f6e8a310.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-be7ae2c86205e336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-a9b797dd3ce402d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-28T12:51:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas阴影和图形变换">
+<meta name="twitter:description" content="一、阴影设置1、阴影的颜色：值为标准的CSS颜色值，用于设定阴影颜色效果，默认是全透明的黑色1context.shadowColor = color; 2、阴影模糊度：用户设定阴影的模糊程度，其数值不跟像素挂钩，默认为01context.shadowBlur = 5; 3、阴影的偏移：shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离。负值表示阴影">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/7426676-1883281ac3fad951.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="刘雅玲" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘雅玲</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录我的编程之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-canvas阴影和图形变换" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/28/canvas阴影和图形变换/" class="article-date">
+  <time datetime="2017-12-28T12:50:41.000Z" itemprop="datePublished">2017-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      canvas阴影和图形变换
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、阴影设置"><a href="#一、阴影设置" class="headerlink" title="一、阴影设置"></a>一、阴影设置</h1><h6 id="1、阴影的颜色：值为标准的CSS颜色值，用于设定阴影颜色效果，默认是全透明的黑色"><a href="#1、阴影的颜色：值为标准的CSS颜色值，用于设定阴影颜色效果，默认是全透明的黑色" class="headerlink" title="1、阴影的颜色：值为标准的CSS颜色值，用于设定阴影颜色效果，默认是全透明的黑色"></a>1、阴影的颜色：值为标准的CSS颜色值，用于设定阴影颜色效果，默认是全透明的黑色</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.shadowColor = color;</span><br></pre></td></tr></table></figure>
+<h6 id="2、阴影模糊度：用户设定阴影的模糊程度，其数值不跟像素挂钩，默认为0"><a href="#2、阴影模糊度：用户设定阴影的模糊程度，其数值不跟像素挂钩，默认为0" class="headerlink" title="2、阴影模糊度：用户设定阴影的模糊程度，其数值不跟像素挂钩，默认为0"></a>2、阴影模糊度：用户设定阴影的模糊程度，其数值不跟像素挂钩，默认为0</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.shadowBlur = 5;</span><br></pre></td></tr></table></figure>
+<h6 id="3、阴影的偏移："><a href="#3、阴影的偏移：" class="headerlink" title="3、阴影的偏移："></a>3、阴影的偏移：</h6><p>shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离。负值表示阴影会往上或左延伸，正值则表示会往下或右延伸，它们默认都为 0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">context.shadowOffsetX = 10; //正值：往右</span><br><span class="line">context.shadowOffsetY = 10;  //正值：往下</span><br></pre></td></tr></table></figure>
+<h6 id="4、设置文字阴影的例子"><a href="#4、设置文字阴影的例子" class="headerlink" title="4、设置文字阴影的例子"></a>4、设置文字阴影的例子</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">		context.font = &quot;bold 50px 微软雅黑&quot;;</span><br><span class="line">		context.fillStyle=&quot;red&quot;;</span><br><span class="line">		//阴影的颜色</span><br><span class="line">		context.shadowColor = &quot;orangered&quot;;</span><br><span class="line">		//阴影模糊度</span><br><span class="line">		context.shadowBlur = 20;</span><br><span class="line">		//阴影的偏移</span><br><span class="line">		context.shadowOffsetX = 10; //正值：往右</span><br><span class="line">		context.shadowOffsetY = 10;  //正值：往下</span><br><span class="line">		context.fillText(&quot;你好&quot;,100,100);</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-1883281ac3fad951.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h1 id="二、图形变换"><a href="#二、图形变换" class="headerlink" title="二、图形变换"></a>二、图形变换</h1><p>我们之前在2D变换中也学习过这些知识，但是我们canvas图形变换有所不同，不同点就是这里的变换并不是变换图形，而是变换坐标系，因此，我们在变换完一个图形之后，坐标系就发生变换了，那么我们如果再直接绘图的话就会出现问题，下面我们来具体是什么情况吧</p>
+<h6 id="1、为了验证我们上面的说法，我们来看一个例子"><a href="#1、为了验证我们上面的说法，我们来看一个例子" class="headerlink" title="1、为了验证我们上面的说法，我们来看一个例子"></a>1、为了验证我们上面的说法，我们来看一个例子</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">	    //用黑色直线线表示开始的x/y轴</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 5;</span><br><span class="line">		context.lineTo(800,0);</span><br><span class="line">		context.stroke();</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 5;</span><br><span class="line">		context.lineTo(0,800);</span><br><span class="line">		context.stroke();</span><br><span class="line">		//原矩形：蓝色</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.fillStyle = &quot;cornflowerblue&quot;;</span><br><span class="line">		context.fillRect(0,0,50,50);</span><br><span class="line">		context.fill();</span><br><span class="line">       	//平移矩形：粉色</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.translate(200,0)  //正：往右、下</span><br><span class="line">		context.fillStyle = &quot;deeppink&quot;;</span><br><span class="line">		context.fillRect(0,0,50,50);</span><br><span class="line">		context.fill();</span><br><span class="line">		//用蓝色直线表示平移以后的坐标轴</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 5;</span><br><span class="line">		context.lineTo(400,0);</span><br><span class="line">		context.stroke();</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 5;</span><br><span class="line">		context.lineTo(0,400);</span><br><span class="line">		context.stroke();</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>得到如下效果：证明图形变换以后是改变了坐标系的<br><img src="http://upload-images.jianshu.io/upload_images/7426676-4881d690bfd71ffa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h6 id="2、旋转"><a href="#2、旋转" class="headerlink" title="2、旋转"></a>2、旋转</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">        //用黑色直线表示平移以后的坐标轴</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 10;</span><br><span class="line">		context.lineTo(800,0);</span><br><span class="line">		context.stroke();</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 10;</span><br><span class="line">		context.lineTo(0,800);</span><br><span class="line">		context.stroke();</span><br><span class="line">		//原图：蓝色</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.fillStyle = &quot;cornflowerblue&quot;;</span><br><span class="line">		context.fillRect(100,0,50,50);</span><br><span class="line">		context.fill();	</span><br><span class="line">		//旋转：绿色</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.fillStyle = &quot;limegreen&quot;;</span><br><span class="line">		context.rotate(Math.PI/4);</span><br><span class="line">		context.fillRect(100,0,50,50);</span><br><span class="line">		//用蓝色直线表示平移以后的坐标轴</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 5;</span><br><span class="line">		context.strokeStyle = &quot;blue&quot;;</span><br><span class="line">		context.lineTo(800,0);</span><br><span class="line">		context.stroke();</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 5;</span><br><span class="line">		context.strokeStyle = &quot;blue&quot;;</span><br><span class="line">		context.lineTo(0,800);</span><br><span class="line">		context.stroke();</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/7426676-afe47e4335fc10f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>说明我们图形默认是绕canvas坐标系原点旋转的，图形在旋转的过程中，坐标系也会跟着旋转</p>
+<h6 id="3、图形缩放"><a href="#3、图形缩放" class="headerlink" title="3、图形缩放"></a>3、图形缩放</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">		//用黑色直线线表示开始的坐标系</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 30;</span><br><span class="line">		context.lineTo(100,0);</span><br><span class="line">		context.stroke();</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 30;</span><br><span class="line">		context.lineTo(0,100);</span><br><span class="line">		context.stroke();</span><br><span class="line">		//原图：蓝色</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.fillStyle = &quot;cornflowerblue&quot;;</span><br><span class="line">		context.fillRect(100,0,50,50);</span><br><span class="line">		context.fill();</span><br><span class="line">		//缩放：粉色  ,放大/小坐标系，图形大小也缩放</span><br><span class="line">		context.scale(2,1);   //第一个参数是X轴缩放比例，第二个参数是Y轴缩放比例</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.fillStyle = &quot;pink&quot;;</span><br><span class="line">		context.fillRect(100,0,50,50);</span><br><span class="line">	//用蓝色直线表示平移以后的坐标轴</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 10;</span><br><span class="line">		context.strokeStyle = &quot;blue&quot;;</span><br><span class="line">		context.lineTo(100,0);</span><br><span class="line">		context.stroke();</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 10;</span><br><span class="line">		context.strokeStyle = &quot;blue&quot;;</span><br><span class="line">		context.lineTo(0,100);</span><br><span class="line">		context.stroke();</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/7426676-4d9731c5f6e8a310.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>我们可以看到，我们在放大X轴图形的宽度时，我们的坐标系的X轴也跟着放大了</p>
+<p>那我们在对canvas图形做变换之后，怎么才能重新再canvas上绘制我们我们想要的图形而又不用繁琐的方式将他改变的坐标系恢复呢？<br>刚好canvas有状态的保存和获取<br><img src="http://upload-images.jianshu.io/upload_images/7426676-be7ae2c86205e336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"><br>比如我们拿上面写过的例子进行演示一下状态的保存和获取效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;&lt;/title&gt;</span><br><span class="line">		&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">			canvas&#123;</span><br><span class="line">				border:1px solid red;</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;canvas id=&quot;mycanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		var canvas = document.getElementById(&quot;mycanvas&quot;);</span><br><span class="line">		var context = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">		//用黑色直线线表示开始的坐标系</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 30;</span><br><span class="line">		context.lineTo(100,0);</span><br><span class="line">		context.stroke();</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 30;</span><br><span class="line">		context.lineTo(0,100);</span><br><span class="line">		context.stroke();</span><br><span class="line">		//原图：蓝色</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.fillStyle = &quot;cornflowerblue&quot;;</span><br><span class="line">		context.fillRect(100,0,50,50);</span><br><span class="line">		context.fill();</span><br><span class="line">		//缩放：粉色  ,放大/小坐标系，图形大小也缩放</span><br><span class="line">        context.save();</span><br><span class="line">		context.scale(2,1);   //第一个参数是X轴缩放比例，第二个参数是Y轴缩放比例</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.fillStyle = &quot;pink&quot;;</span><br><span class="line">		context.fillRect(100,0,50,50);</span><br><span class="line">        context.restore();</span><br><span class="line">	//用蓝色直线表示平移以后的坐标轴</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 10;</span><br><span class="line">		context.strokeStyle = &quot;blue&quot;;</span><br><span class="line">		context.lineTo(100,0);</span><br><span class="line">		context.stroke();</span><br><span class="line">		context.beginPath();</span><br><span class="line">		context.moveTo(0,0);</span><br><span class="line">		context.lineWidth = 10;</span><br><span class="line">		context.strokeStyle = &quot;blue&quot;;</span><br><span class="line">		context.lineTo(0,100);</span><br><span class="line">		context.stroke();</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-a9b797dd3ce402d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>正如你看到的效果图，我们在缩放之前保存了坐标系的状态，也就是一开始未做任何变动的状态，然后在图像缩放之后我们又将这种状态获取到，也就是回到一开始未做任何变动的状态，这就是状态的保存和获取，这样就可以解决我们图形变换对坐标系的影响了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/28/canvas阴影和图形变换/" data-id="cjbqhnrav00054a66ugn78dvf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/26/canvas绘制基本图形/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">canvas绘制基本图形</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/28/canvas阴影和图形变换/">canvas阴影和图形变换</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/26/canvas绘制基本图形/">canvas绘制基本图形</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/25/canvas基本用法/">canvas基本用法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/23/JS常见一些浏览器兼容问题/">JS常见一些浏览器兼容问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/21/JS继承问题/">JS继承问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 雅玲<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
