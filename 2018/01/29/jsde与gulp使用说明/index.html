@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jsde与gulp使用说明 | 刘雅玲</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="jade使用jade是一款基于haml的html模板引擎，已改为pug  1.全局安装 npm install jade -g    新建一个jade文件夹，再建一个后缀名为.jade的文件编辑.jade文件  jade -P -w index.jade  在文件夹jade下监听文件变化，即生成html  index.jade文件 123456789101112131415161718192021">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsde与gulp使用说明">
+<meta property="og:url" content="http://yoursite.com/2018/01/29/jsde与gulp使用说明/index.html">
+<meta property="og:site_name" content="刘雅玲">
+<meta property="og:description" content="jade使用jade是一款基于haml的html模板引擎，已改为pug  1.全局安装 npm install jade -g    新建一个jade文件夹，再建一个后缀名为.jade的文件编辑.jade文件  jade -P -w index.jade  在文件夹jade下监听文件变化，即生成html  index.jade文件 123456789101112131415161718192021">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-b6ce274dcc26f448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-586689ab58f8d8d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-042d7c16ff9e73d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-818aa370b58b48f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-764a9af09eb41f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-999c72a0709ce3bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-c041751676cb5a00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-7936851de0e9c4ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-e7d83945d54b9f3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/7426676-2c4c3ae40241093d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-29T10:02:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jsde与gulp使用说明">
+<meta name="twitter:description" content="jade使用jade是一款基于haml的html模板引擎，已改为pug  1.全局安装 npm install jade -g    新建一个jade文件夹，再建一个后缀名为.jade的文件编辑.jade文件  jade -P -w index.jade  在文件夹jade下监听文件变化，即生成html  index.jade文件 123456789101112131415161718192021">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/7426676-b6ce274dcc26f448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="刘雅玲" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">刘雅玲</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录我的编程之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jsde与gulp使用说明" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/29/jsde与gulp使用说明/" class="article-date">
+  <time datetime="2018-01-29T10:00:59.000Z" itemprop="datePublished">2018-01-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jsde与gulp使用说明
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jade使用"><a href="#jade使用" class="headerlink" title="jade使用"></a>jade使用</h1><p>jade是一款基于haml的html模板引擎，已改为pug</p>
+<blockquote>
+<p>1.全局安装 npm install jade -g  </p>
+</blockquote>
+<p>新建一个jade文件夹，再建一个后缀名为.jade的文件<br>编辑.jade文件</p>
+<blockquote>
+<p>jade -P -w index.jade  在文件夹jade下监听文件变化，即生成html</p>
+</blockquote>
+<p>index.jade文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">doctype html</span><br><span class="line">html</span><br><span class="line">    head</span><br><span class="line">        meta(charset=&apos;utf-8&apos;)</span><br><span class="line">        title 我的网站</span><br><span class="line">    body</span><br><span class="line">        div</span><br><span class="line">            |hehe</span><br><span class="line">        a: img(src=&apos;#&apos;)</span><br><span class="line">        div(style=&#123;width:&quot;100px&quot;,height:&quot;100px&quot;&#125;)</span><br><span class="line">            测试 div</span><br><span class="line">        div(class=&apos;test&apos;) 我是类名位test的div</span><br><span class="line">        .test 我是类名位test的div</span><br><span class="line">        #myid 我是id名为myid的div</span><br><span class="line">        .myclass#myids 我是有id也有class的div</span><br><span class="line">        -var name=&apos;张三&apos;</span><br><span class="line">            div</span><br><span class="line">                名字是#&#123;name&#125;</span><br><span class="line">            // 我是注释</span><br><span class="line">            //</span><br><span class="line">                我是注释一</span><br><span class="line">                我是注释二</span><br><span class="line">            //- 我是jade注释</span><br><span class="line">            //-</span><br><span class="line">                我是jade注释一</span><br><span class="line">                我是jade注释二</span><br><span class="line">        ul</span><br><span class="line">            -for(var i=0;i&lt;3;i++)</span><br><span class="line">                li 我是循环的li</span><br><span class="line">        -var arr = [&quot;小明&quot;,&quot;小宏&quot;,&quot;夏培&quot;]</span><br><span class="line">            for val in arr</span><br><span class="line">                p #&#123;val&#125;</span><br><span class="line">        -var arr = [&#123;name:&quot;小华&quot;,age:&quot;20&quot;&#125;,&#123;name:&quot;李欣&quot;,age:&quot;10&quot;&#125;]</span><br><span class="line">            for val in arr</span><br><span class="line">                p 姓名是 #&#123;val.name&#125; 年龄是 #&#123;val.age&#125;</span><br><span class="line">        -var obj = &#123;name:&quot;皇妃&quot;,age:&quot;25&quot;&#125;</span><br><span class="line">            for item,index in obj</span><br><span class="line">                p 属性是 #&#123;index&#125; 属性值是 #&#123;item&#125;</span><br><span class="line">        -var judge = true</span><br><span class="line">            if judge</span><br><span class="line">                p judge的值是true</span><br><span class="line">            else</span><br><span class="line">                p judge的值是false</span><br><span class="line">        -var num = 3</span><br><span class="line">            case num</span><br><span class="line">                when 1</span><br><span class="line">                    p #&#123;num&#125;的值等于1</span><br><span class="line">                when 2</span><br><span class="line">                    p #&#123;num&#125;的值等于2</span><br><span class="line">                when 3</span><br><span class="line">                    p #&#123;num&#125;的值等于3</span><br><span class="line">                default</span><br><span class="line">                    p #&#123;num&#125;是其他值</span><br><span class="line">        //- js写法</span><br><span class="line">        script(type=&apos;text/javascript&apos;).</span><br><span class="line">            console.log(&quot;你好&quot;)</span><br><span class="line">            function test()&#123;</span><br><span class="line">                console.log(&quot;我是test函数&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">        //- 封装函数</span><br><span class="line">        mixin list</span><br><span class="line">            ul</span><br><span class="line">                -for(var i=0;i&lt;3;i++)</span><br><span class="line">                    li 我是li里地内容</span><br><span class="line">        //- 调用封装函数</span><br><span class="line">        +list</span><br><span class="line">        +list</span><br><span class="line">        //- 定义宠物的html</span><br><span class="line">        mixin pet(name,sex)</span><br><span class="line">            p 宠物的名字是 #&#123;name&#125;宠物的性别是 #&#123;sex&#125;</span><br><span class="line">        //- 传参调用</span><br><span class="line">        +pet(&quot;大黄&quot;,&quot;母&quot;)</span><br><span class="line">        +pet(&quot;小强&quot;,&quot;公&quot;)</span><br></pre></td></tr></table></figure>
+<p>jade基本语法：</p>
+<blockquote>
+<p>1.通过缩进关系，代替以往html的层级包含关系，如 个简单的静态   可以表达为，注意要统一使用tab或者空格缩进，不要混用</p>
+<p>2.内联书写层级,a: img</p>
+<p>3.style属性：div(style={width:”200px”,color:”red”})</p>
+<p>4.使用”-”来定义变量，使用“=”把变量输出到元素内；</p>
+<p>5.通过 #{variable} 插 相应的变 值</p>
+<p>6.html 元素属性通过在标签右边通过括号包含（可以通过判断来添加）</p>
+<p>7.文本<br>通过在 字前 添加竖线符号“|”可让 jade 原样输出内容 在html标签标记后 通过空格隔开 本内容 在html标签标记后通过添加英  号“.”添加块级 本</p>
+<p>8.注释：可以通过双斜杠进 注释</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-b6ce274dcc26f448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<blockquote>
+<p>9.循环</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-586689ab58f8d8d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<blockquote>
+<p>10.判断语句”if  else”  case  when default </p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-042d7c16ff9e73d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-818aa370b58b48f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<blockquote>
+<p>11.mixin封装函数以及调用</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-764a9af09eb41f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>12.js写法、css写法</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-999c72a0709ce3bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h1 id="gulp使用"><a href="#gulp使用" class="headerlink" title="gulp使用"></a>gulp使用</h1><p>gulp 是基于node实现Web前端自动化开发的工具，它能够极大的提高开发效率。gulp还可以做很多事 </p>
+<blockquote>
+<ol>
+<li>压缩CSS</li>
+<li>压缩图 </li>
+<li>编译Sass/LESS</li>
+<li>编译CoffeeScript</li>
+<li>markdown 转换为 html<br>6.压缩合并js</li>
+</ol>
+</blockquote>
+<h3 id="使用gulp来压缩js"><a href="#使用gulp来压缩js" class="headerlink" title="使用gulp来压缩js"></a>使用gulp来压缩js</h3><p>1.在jade同级建立gulp文件夹,再建立gulpfile.js配置文件</p>
+<p>2.在gulp路径下安装gulp </p>
+<blockquote>
+<p>sudo npm install gulp</p>
+</blockquote>
+<p>3.获取到压缩的js的模块gulp-uglify和压缩css的模块gulp-minify-css</p>
+<blockquote>
+<p>npm install gulp-uglify –save</p>
+<p>npm install gulp-minify-css –save</p>
+</blockquote>
+<p>这样我们gulp文件夹里地package.json配置文件里就会有者两个模块</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-c041751676cb5a00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>4.在gulpfile.js里面引入gulp模块</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-7936851de0e9c4ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>5.在gulpfile.js里面创建压缩任务：下面我们创建两个压缩任务：js和css</p>
+<blockquote>
+<p>创建压缩任务：gulp.task(name, fn) - 定义任务，第一个参数是任务名，第二个参数是任务 内容。<br>gulp.src(path) - 选择文件，传入参数是文件路径。<br>gulp.dest(path) - 输出文件<br>gulp.pipe() - 管道，你可以暂时将 pipe 理解为将操作加入执行队列</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-e7d83945d54b9f3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>6.监听文件修改：</p>
+<blockquote>
+<p>监听文件修改：gulp.task(‘auto’, function () {<br>// 监听文件修改，当文件被修改则执行 script 任务 gulp.watch(‘js/*.js’, [‘script’])<br>})</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-2c4c3ae40241093d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>7.终端进入gulp路径下，输入命令：</p>
+<blockquote>
+<p>gulp mytask</p>
+<p>gulp auto  </p>
+</blockquote>
+<p>就能实时监控app文件夹下的js文件和css文件，当文件内容有变化时，会自动在build文件夹下生成压缩后的文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/29/jsde与gulp使用说明/" data-id="cjd01pvz900075466gdptc3xu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/29/nodejs基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodejs基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/29/jsde与gulp使用说明/">jsde与gulp使用说明</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/nodejs基础/">nodejs基础</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/28/canvas阴影和图形变换/">canvas阴影和图形变换</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/26/canvas绘制基本图形/">canvas绘制基本图形</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/25/canvas基本用法/">canvas基本用法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 雅玲<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

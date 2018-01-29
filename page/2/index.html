@@ -69,6 +69,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-AJAX介绍及创建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/17/AJAX介绍及创建/" class="article-date">
+  <time datetime="2017-11-17T03:14:03.000Z" itemprop="datePublished">2017-11-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/AJAX介绍及创建/">AJAX介绍及创建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#一、什么是AJAX</p>
+<blockquote>
+<p>1、AJAX即“Asynchronous Javascript And XML”（异步javaScript和XML），是指一种创建交互网页应用的网页开发技术。</p>
+<p>2、AJAX是一种用于创建快速动态网页的技术。通过在后台与服务器进行少量的数据交换，AJAX可以使用网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。传统的网页（不使用AJAX）如果需要更新内容，必须重载整个网页页面。</p>
+<p>3、AJAX的核心是JavaScript对象XMLHttpRequest</p>
+</blockquote>
+<p>交互流程图</p>
+<p>/Users/lanou/Library/Containers/com.tencent.qq/Data/Library/Application Support/QQ/Users/2956192818/QQ/Temp.db/789E753A-2514-469E-8F2A-0D4BBF11BC6B.pn</p>
+<p>#二、AJAX创建流程</p>
+<blockquote>
+<p>1、创建XMLHttpRequest对象</p>
+<p> var xhr=new XMLHttpResquest();</p>
+<p>2、对xhr进行配置</p>
+<p> xhr.open(“传输方式GET/POST”,”网址”,”是否异步”)；</p>
+<p>3、发送网络请求</p>
+<p>xhr.send();</p>
+<p>4、监听网络请求状态并接收网络返回的数据</p>
+<p>请求过程中，readyState会发生变化，0~1</p>
+<p>0是厨师状态，1是创建连接，2是客户端向服务端发送数据，3是服务端可是向客户端返回数据，4是客户端接收数据</p>
+<p>xhr.onreadyststechange = function(){</p>
+<p>console.log(this.readyState);</p>
+<p>}</p>
+<p>5、onload事件,在状态4之后才开始执行</p>
+<p>xhr.onload=function(){</p>
+<p>console.log(this.resposeText);</p>
+<p>}</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjd01pvyy00035466ff404gr2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-php函数文件上传" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/16/php函数文件上传/" class="article-date">
@@ -106,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjd01e2n900084666682ay4dq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjd01pw02000h5466zesaymaj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -156,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cjd01e2na00094666e1ctae3g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/php函数/" data-id="cjd01pvzd00085466n5zzrmby" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cjd01e2nf000c4666wiuespyx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php多维数组/" data-id="cjd01pvzl000d5466cojhilpg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cjd01e2ni000d4666k453vx63" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php数组函数/" data-id="cjd01pw00000g5466hksloka7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cjd01e2nl000f46664vttv9zn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/14/php数组/" data-id="cjd01pvzx000f5466qd9fkd5l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cjd01e2ne000b4666armvjlx7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/php基础语法/" data-id="cjd01pvzg000a54664tk0fnn4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -390,7 +453,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cjd01e2mw00044666obc2i3v8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/hello-world/" data-id="cjd01pvz300055466jzh3omom" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,6 +497,10 @@
       <ul>
         
           <li>
+            <a href="/2018/01/29/jsde与gulp使用说明/">jsde与gulp使用说明</a>
+          </li>
+        
+          <li>
             <a href="/2018/01/29/nodejs基础/">nodejs基础</a>
           </li>
         
@@ -447,10 +514,6 @@
         
           <li>
             <a href="/2017/12/25/canvas基本用法/">canvas基本用法</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/23/JS常见一些浏览器兼容问题/">JS常见一些浏览器兼容问题</a>
           </li>
         
       </ul>
