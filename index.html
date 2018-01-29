@@ -69,6 +69,139 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-nodejs基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/29/nodejs基础/" class="article-date">
+  <time datetime="2018-01-29T09:52:05.000Z" itemprop="datePublished">2018-01-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/29/nodejs基础/">nodejs基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、使用webstorm编辑器创建一个简单的nodejs服务器（打开一个进程）"><a href="#一、使用webstorm编辑器创建一个简单的nodejs服务器（打开一个进程）" class="headerlink" title="一、使用webstorm编辑器创建一个简单的nodejs服务器（打开一个进程）"></a>一、使用webstorm编辑器创建一个简单的nodejs服务器（打开一个进程）</h1><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//引入http模块</span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line">//调用http的接口创建服务器,回调——&gt;异步(先打印22222222，再在控制台打印1111111);</span><br><span class="line">var server = http.createServer(function(req,res)&#123;    //req:request浏览器提交给服务器相关  res:response;服务器到浏览器</span><br><span class="line">    console.log(1111111);</span><br><span class="line">    //设置编码格式：</span><br><span class="line">    res.write(&quot;&lt;head&gt;&lt;meta charset=&apos;utf-8&apos;/&gt;&lt;/head&gt;&quot;);</span><br><span class="line">    res.end();</span><br><span class="line">&#125;)</span><br><span class="line">console.log(22222222);</span><br><span class="line">server.listen(8787);  //8787：表示端口号 ，在浏览器地址栏输入 http://localhost:8787 运行</span><br></pre></td></tr></table></figure>
+<p>服务器设置编码格式的语句有<font color="red">三种</font>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// res.write(&quot;&lt;head&gt;&lt;meta charset=&apos;utf-8&apos;/&gt;&lt;/head&gt;&quot;);</span><br><span class="line">// res.setHeader(&quot;Content-type&quot;,&quot;text/html;charset=utf8&quot;);</span><br><span class="line">// res.writeHeader(200,&#123;&quot;Content-type&quot;:&quot;text/html;charset=utf8&quot;&#125;);  //200是状态码</span><br></pre></td></tr></table></figure>
+<h3 id="如何关闭node进程"><a href="#如何关闭node进程" class="headerlink" title="如何关闭node进程"></a>如何关闭node进程</h3><p>先在终端查看进程：</p>
+<blockquote>
+<p>lsof -i tcp:8787 </p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-bdabd1acc697a49c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>PID栏就表示我们正在运行的进程，node进程PID是891<br>在终端输入命令</p>
+<blockquote>
+<p>kill 891 </p>
+</blockquote>
+<p>就关闭了node进程</p>
+<font color="red">注：</font>如果同时运行多个程序。每个程序端口号必须不同，不然会报错，因为一个端口号只能运行一个程序，下面是报错的内容<br><br><img src="http://upload-images.jianshu.io/upload_images/7426676-2448147806e8d89e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"><br><br>nodejs一个home.js文件引入另一个mytestjs.js文件后，不能直接调用mytestjs.js文件里面的函数或者变量<br><br>home.js引入mytest.js文件<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//必须通过require语句引入</span><br><span class="line">var test = require(&quot;./mytestjs.js&quot;);   //必须加./</span><br><span class="line">//调用mytestjs.js文件里地myFn函数</span><br><span class="line">test.myFn();</span><br></pre></td></tr></table></figure><br><br>注：testjs.js里面只能写命名函数<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var myFn = function()&#123;</span><br><span class="line">    console.log(&quot;我是myFN函数&quot;);</span><br><span class="line">&#125;</span><br><span class="line">var a = &quot;你好&quot;;</span><br><span class="line">//导出变量或者函数，被引用的文件智能通过</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    myFn:myFn,</span><br><span class="line">    a:a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>打开webstorm的Terminal终端，将commonfn文件夹拖过去，再输入npm init初始化，一直Enter，会自动生成package.json配置文件，如下图所示<br><br><img src="http://upload-images.jianshu.io/upload_images/7426676-cf21b957b8e56c70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"><br><br>==package.json配置文件里面的字段全解链接==：<br><br><a href="http://blog.csdn.net/woxueliuyun/article/details/39294375" target="_blank" rel="external">http://blog.csdn.net/woxueliuyun/article/details/39294375</a><br><br>### <font color="purple">单独安装某个插件</font>
+
+<p>比如：安装cookie</p>
+<blockquote>
+<p>npm install cookie</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-e500578483a1546d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>卸载cookie</p>
+<blockquote>
+<p>npm uninstall cookie</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-679521017d688977.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h3 id="一步安装项目中所有的插件"><a href="#一步安装项目中所有的插件" class="headerlink" title="一步安装项目中所有的插件"></a><font color="purple">一步安装项目中所有的插件</font></h3><blockquote>
+<p>1、终端输入命令 npm init  ，自动在项目下生成package.json文件</p>
+<p>2、终端命令：npm install<br>会把我们所在目录下项目下的package.json里面需要的插件自动全部下载下来</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-6201b0af51baced2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h3 id="使用npm安装vue"><a href="#使用npm安装vue" class="headerlink" title="使用npm安装vue"></a><font color="green">使用npm安装vue</font></h3><blockquote>
+<p>sudo npm install –global vue-cli<br>使用npm安装vue脚手架cli ，拥有vue指令</p>
+<p> vue -V  查看vue版本号</p>
+<p>vue init webpack vuetest 创建一个基于webpack模板的新项目</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-9664a3f8a839d002.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>会自动生成一个vuetest文件夹以及里面的文件</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-2e91017d267dbb81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>如果文件下载速度过慢，我们可以进入webstorm将node_modules设置为不扫描，减少扫描时间，如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-9e584c81e30ee390.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<blockquote>
+<p>终端运行 npm run dev ，运行”npm run dev”的时候执行的是build/build.js文件</p>
+</blockquote>
+<p>会得到一个地址</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-8e4ab15b0582d0c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<p>将这个地址在浏览器运行 </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-b538016e00dcaf0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<hr>
+<h1 id="webpack打包"><a href="#webpack打包" class="headerlink" title="webpack打包"></a>webpack打包</h1><p>全局安装webpack： </p>
+<blockquote>
+<p>npm install webpack -g</p>
+</blockquote>
+<h3 id="js文件打包"><a href="#js文件打包" class="headerlink" title="js文件打包"></a><font color="red">js文件打包</font></h3><p>1.修改webpack.config.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    //输入文件：当前执行文件的路径/app/index.js(单入口)（待编译）</span><br><span class="line">    entry:__dirname+&quot;/app/index.js&quot;,</span><br><span class="line">    //输出文件：（已编译）</span><br><span class="line">    output:&#123;</span><br><span class="line">        path:__dirname+&quot;/build&quot;,</span><br><span class="line">        filename:&quot;bundle.js&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    //监视</span><br><span class="line">    watch:true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>2.新建两个文件：</p>
+<p>==app文件== 待编译</p>
+<p>==build文件== 已编译</p>
+<blockquote>
+<p>在webpack路径下：终端输入webpack 目的将输入文件打包到build下</p>
+</blockquote>
+<p>打包成功会在build文件夹下生成一个bundle.js，然后再单入口（index.html）文件里面引入bundle.js就可以</p>
+<p>3.index.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>4.主入口文件index.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;我是index.js文件&quot;);</span><br><span class="line">require(&apos;./index.css&apos;);</span><br><span class="line">var res = require(&quot;./module1.js&quot;);</span><br><span class="line">console.log(res.a);</span><br><span class="line">res.fn();</span><br></pre></td></tr></table></figure>
+<h3 id="css样式打包："><a href="#css样式打包：" class="headerlink" title="css样式打包："></a><font color="red">css样式打包</font>：</h3><p>1.安装css-loader，style-loader</p>
+<blockquote>
+<p>sudo npm install css-loader style-loader –save</p>
+</blockquote>
+<p>2.index.css</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    background-color: greenyellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.index.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>2.修改webpack.config.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line"> module:&#123;</span><br><span class="line">       rules:[&#123;</span><br><span class="line">       //配置正则表达式，查找后缀为.css文件</span><br><span class="line">       test:/\.css$/,</span><br><span class="line">       // 配置加载器,用！符号级联</span><br><span class="line">       use: [&apos;style-loader&apos;, &apos;css-loader&apos;],</span><br><span class="line">     &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="构建本地服务器"><a href="#构建本地服务器" class="headerlink" title="构建本地服务器"></a><font color="blue">构建本地服务器</font></h3><p>1.安装：npm install –save-dev webpack-dev-server</p>
+<p>2.配置webpack.config.js文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">	    contentBase: &quot;./build&quot;,//本地服务器所加载的页面所在的目录</span><br><span class="line">	    historyApiFallback: true,//不跳转</span><br><span class="line">	    inline: true//实时刷新</span><br><span class="line">	  &#125;</span><br></pre></td></tr></table></figure>
+<p>3.在webpackage里面的package.json中的scripts对象中添加如下命令，用以开启本地服务器，如果webpack里面没有package.json文件，那就新建一个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">	    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</span><br><span class="line">	    &quot;start&quot;: &quot;webpack&quot;,</span><br><span class="line">	    &quot;server&quot;: &quot;webpack-dev-server --open&quot;</span><br><span class="line">	  &#125;</span><br></pre></td></tr></table></figure>
+<p>4.如果是新建的就执行以下下面的命令，wenpack路径下终端执行</p>
+<blockquote>
+<p>sudo cnpm install webpack-dev-server</p>
+</blockquote>
+<p>到这里本地服务器就构建成功了</p>
+<hr>
+<h1 id="拓展："><a href="#拓展：" class="headerlink" title="拓展："></a>拓展：</h1><h3 id="cnpm淘宝镜像下载说明地址"><a href="#cnpm淘宝镜像下载说明地址" class="headerlink" title="cnpm淘宝镜像下载说明地址"></a>cnpm淘宝镜像下载说明地址</h3><p>==<a href="https://npm.taobao.org/" target="_blank" rel="external">https://npm.taobao.org/</a>==<br>终端根目录 运行 </p>
+<blockquote>
+<p>sudo npm install -g </p>
+<p>cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a></p>
+</blockquote>
+<p>成功之后如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/7426676-9f8c28d952ab8f2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"></p>
+<h3 id="其他命令："><a href="#其他命令：" class="headerlink" title="其他命令："></a>其他命令：</h3><p>npm root：查看当前包得安装路径</p>
+<p>npm root -g：查看全局的包的安装路径</p>
+<p>npm -v：查看npm安装的版本 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/29/nodejs基础/" data-id="cjd01e2n400074666w2hr8g2o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-canvas阴影和图形变换" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/28/canvas阴影和图形变换/" class="article-date">
@@ -114,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/28/canvas阴影和图形变换/" data-id="cjbqhnrav00054a66ugn78dvf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/28/canvas阴影和图形变换/" data-id="cjd01e2nc000a4666v521n3ni" class="article-share-link">Share</a>
       
       
     </footer>
@@ -178,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/26/canvas绘制基本图形/" data-id="cjbqhnrax00064a66s6lnkz6g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/26/canvas绘制基本图形/" data-id="cjd01e2mt00024666lavdv2x9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -226,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/25/canvas基本用法/" data-id="cjbqhnran00024a66sacrh820" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/25/canvas基本用法/" data-id="cjd01e2mp00014666j9nksdi7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +421,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/23/JS常见一些浏览器兼容问题/" data-id="cjbqhnraz00074a66c8a1494l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/23/JS常见一些浏览器兼容问题/" data-id="cjd01e2mj00004666l0n7q0s7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/21/JS继承问题/" data-id="cjbqhnrak00014a665c6npwnn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/21/JS继承问题/" data-id="cjd01e2mz00054666o9t284rh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +535,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/20/js面向对象/" data-id="cjbqhnrar00044a66j7gav8e0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/20/js面向对象/" data-id="cjd01e2n200064666p4qhb6wb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -456,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/25/php面向对象/" data-id="cjbqhnrc6000f4a66rc99jjan" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/25/php面向对象/" data-id="cjd01e2nk000e466632jshfdy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -492,7 +625,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/23/php数据库语句/" data-id="cjbqhnrbn000b4a66j6xx7aun" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/23/php数据库语句/" data-id="cjd01e2nn000g4666hvzh4q12" class="article-share-link">Share</a>
       
       
     </footer>
@@ -555,54 +688,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjbqhnrac00004a66dw3w8lgx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-php函数文件上传" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/16/php函数文件上传/" class="article-date">
-  <time datetime="2017-11-16T13:58:12.000Z" itemprop="datePublished">2017-11-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/16/php函数文件上传/">php函数文件上传</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##文件上传 $_FILES</p>
-<p>###1、限制<br>（1）文件大小（前端设置和后台限制）<br>（2）错误：</p>
-<pre><code>0：没有错误
-1：文件大小超出php的设置
-2：文件大小超出HTML最大设置，MAX_FILES_SIZE
-3：    文件只被上传了一部分
-4：没有上传任何文件
-</code></pre><p>###2、上传图片<br>（1）图片名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$name=$_FILES[&apos;tupian&apos;][&apos;name&apos;];</span><br></pre></td></tr></table></figure>
-<p>（2）图片类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$type=$_FILES[&apos;tupian&apos;][&apos;type&apos;];</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/16/php函数文件上传/" data-id="cjbqhnrbf00084a66xb06l3cx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/17/AJAX介绍及创建/" data-id="cjd01e2mv000346662x1dei9w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -633,7 +719,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
     </div>
   </div>
 
@@ -644,6 +730,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/29/nodejs基础/">nodejs基础</a>
+          </li>
         
           <li>
             <a href="/2017/12/28/canvas阴影和图形变换/">canvas阴影和图形变换</a>
@@ -661,10 +751,6 @@
             <a href="/2017/12/23/JS常见一些浏览器兼容问题/">JS常见一些浏览器兼容问题</a>
           </li>
         
-          <li>
-            <a href="/2017/12/21/JS继承问题/">JS继承问题</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -677,7 +763,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 雅玲<br>
+      &copy; 2018 雅玲<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
